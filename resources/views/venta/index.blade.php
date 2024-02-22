@@ -38,12 +38,12 @@
                             <table class="table search-table">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
-										<th>Tipo Tramite</th>
+                                        <th>ID</th>
+										<th>Tipo de Tramite</th>
 										<th>Cliente</th>
 										<th>Costo</th>
-										<th>Precio Venta</th>
+										<th>Precio de Venta</th>
+                                        <th>Ganancia</th>
 										<th>Estado</th>
 
                                         <th></th>
@@ -52,13 +52,13 @@
                                 <tbody>
                                     @foreach ($ventas as $venta)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $venta->tipo_tramite }}</td>
+                                            <td>{{ $venta->id }}</td>
+											<td>{{ $venta->nombre_tramite }}</td>
 											<td>{{ $venta->cliente }}</td>
-											<td>{{ $venta->costo }}</td>
-											<td>{{ $venta->precio_venta }}</td>
-											<td>{{ $venta->estado }}</td>
+											<td>${{ $venta->costo }}</td>
+											<td>${{ $venta->precio_venta }}</td>
+                                            <td>${{ $venta->ganancia }}</td>
+											<td>{{ $venta->nombre_estado }}</td>
 
                                             <td>
                                                 <form class="alerta-eliminar" action="{{ route('ventas.destroy',$venta->id) }}" method="POST">
@@ -76,24 +76,10 @@
                         </div>
                     </div>
                 </div>
-                {!! $ventas->links() !!}
-            </div>
+           </div>
         </div>
     </div>
 
-
-
-<!-- Agrega el código JavaScript y jQuery para implementar el filtro de búsqueda -->
-<script>
-$(document).ready(function(){
-  $('#search').on('keyup', function(){
-    var query = $(this).val().toLowerCase();
-    $('.search-table tbody tr').filter(function(){
-      $(this).toggle($(this).text().toLowerCase().indexOf(query) > -1);
-    });
-  });
-});
-</script>
 
 <!-- Agrega el código JavaScript y jQuery para implementar el filtro de búsqueda -->
 <script>
@@ -208,5 +194,26 @@ $(document).ready(function(){
 
      @endif
 
+
+<!-- con este script de abajo hacemos que no se peudan recibir minúsculas ni letras con tilde, utilizando jquery -->
+<script>
+$(document).ready(function() {
+  // Escucha el evento de cambio en los campos de entrada
+  $('input[type="text"]').on('input', function() {
+    // Verifica si el campo actual es el campo de excepción
+    if ($(this).attr('id') !== 'convertirAMinusculas') {
+      var inputValue = $(this).val();
+      var modifiedValue = inputValue.toUpperCase().replace(/[ÁÉÍÓÚáéíóúÜüÄËÏÖÜäëïöü`´]/g, function(letter) {
+        // Mapea las vocales con caracteres especiales a su versión sin tilde o dieresis
+        var vowelsWithAccent = 'ÁÉÍÓÚáéíóúÜüÄËÏÖÜäëïöü';
+        var vowelsWithoutAccent = 'AEIOUaeiouUuAEIOUaeiouUu';
+        var index = vowelsWithAccent.indexOf(letter);
+        return vowelsWithoutAccent.charAt(index);
+      });
+      $(this).val(modifiedValue);
+    }
+  });
+});
+</script>
 
 @endsection

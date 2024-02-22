@@ -14,14 +14,18 @@ return new class extends Migration
         //
         Schema::create('ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo_tramite');
-            $table->string('cliente');
-            $table->integer('costo');
-            $table->integer('precio_venta');
-            $table->string('estado');
+            $table->integer('id_tramite');
+            $table->string('cliente', 255);
+            $table->integer('costo')->nullable();
+            $table->integer('precio_venta')->nullable();
+            $table->string('dato1', 255)->nullable();
+            $table->string('dato2', 255)->nullable();
+            $table->string('dato3', 255)->nullable();
+            $table->string('dato4', 255)->nullable();
+            $table->text('observaciones')->nullable();
+            $table->string('estado', 255)->nullable();
             $table->timestamps();
-
-            });
+        });
 
     }
 

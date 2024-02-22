@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
@@ -18,10 +20,19 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::paginate();
+        $ventas = DB::table('ventas')
+            ->leftJoin('estados', 'ventas.id_estado', '=', 'estados.id')
+            ->leftJoin('tramites', 'ventas.id_tramite', '=', 'tramites.id')
+            ->select('ventas.*', 'estados.nombre as nombre_estado', 'tramites.nombre as nombre_tramite')
+            ->get();
 
-        return view('venta.index', compact('ventas'))
-            ->with('i', (request()->input('page', 1) - 1) * $ventas->perPage());
+        // Calcular la ganancia para cada venta
+        foreach ($ventas as $venta) {
+            $ganancia = $venta->precio_venta - $venta->costo;
+            $venta->ganancia = $ganancia;
+        }
+        
+        return view('venta.index', compact('ventas','ganancia'));
     }
 
     /**
@@ -32,7 +43,11 @@ class VentaController extends Controller
     public function create()
     {
         $venta = new Venta();
-        return view('venta.create', compact('venta'));
+
+        $tramites = DB::table('tramites')->get();        
+        $estados = DB::table('estados')->get();    
+
+        return view('venta.create', compact('venta','estados','tramites'));
     }
 
     /**
@@ -74,7 +89,10 @@ class VentaController extends Controller
     {
         $venta = Venta::find($id);
 
-        return view('venta.edit', compact('venta'));
+        $tramites = DB::table('tramites')->get();        
+        $estados = DB::table('estados')->get();   
+
+        return view('venta.edit', compact('venta','estados','tramites'));
     }
 
     /**

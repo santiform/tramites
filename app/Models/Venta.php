@@ -21,23 +21,44 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Venta extends Model
 {
-    
-    static $rules = [
-		'tipo_tramite' => 'required',
-		'cliente' => 'required',
-		'costo' => 'nullable',
-		'precio_venta' => 'required',
-		'estado' => 'required',
-    ];
-
     protected $perPage = 20;
 
     /**
-     * Attributes that should be mass-assignable.
+     * Reglas de validación.
      *
      * @var array
      */
-    protected $fillable = ['tipo_tramite','cliente','costo','precio_venta','estado'];
+    public static $rules = [
+        'id_tramite' => 'required',
+        'cliente' => 'required',
+        'costo' => 'nullable',
+        'precio_venta' => 'nullable',
+        'dato1' => 'nullable',
+        'dato2' => 'nullable',
+        'dato3' => 'nullable', // Agregado dato3
+        'dato4' => 'nullable',
+        'observaciones' => 'nullable',
+        'id_estado' => 'required',
+    ];
+
+    /**
+     * Atributos que pueden ser asignados en masa.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_tramite',
+        'cliente',
+        'costo',
+        'precio_venta',
+        'dato1',
+        'dato2',
+        'dato3', // Agregado dato3
+        'dato4',
+        'observaciones',
+        'id_estado',
+    ];
+
 
 
 

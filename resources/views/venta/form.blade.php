@@ -2,13 +2,13 @@
     <div class="box-body">
         
         <div class="form-group">
-            <label for="tipo_tramite"><i class="bi bi-keyboard"></i> Tipo de Trámite</label>
-            <select name="tipo_tramite" id="tipo_tramite" class="form-control{{ $errors->has('tipo_tramite') ? ' is-invalid' : '' }}">
-                <option value="" selected disabled>Seleccioná un tipo de trámite</option>
-                <option value="MULTAS">Multas</option>
-                <option value="AySA">AySA</option>
-                <option value="VISA">VISA</option>
-                <!-- Agrega más opciones según sea necesario -->
+            <label for="id_tramite"><i class="bi bi-keyboard"></i> Tipo de Trámite</label>
+            <select name="id_tramite" id="id_tramite" class="form-control{{ $errors->has('tipo_tramite') ? ' is-invalid' : '' }}">
+                    <option value="" selected disabled>Seleccioná un tipo de trámite</option>
+                <!-- Iterar sobre los tipos de trámite obtenidos en el controlador -->
+                @foreach ($tramites as $tramite)
+                    <option value="{{ $tramite->id }}">{{ $tramite->nombre }}</option>
+                @endforeach
             </select>
             {!! $errors->first('tipo_tramite', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -29,12 +29,13 @@
             {!! $errors->first('precio_venta', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            <label for="estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
-            <select name="estado" id="estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+            <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
+            <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
                 <option value="" selected disabled>Seleccioná el estado del Trámite</option>
-                <option value="opcion1">Opción 1</option>
-                <option value="opcion2">Opción 2</option>
-                <option value="opcion3">Opción 3</option>
+                <option value="1"></i> Solicitud </option>
+                <option value="2">Presupuesto</option>
+                <option value="3">Confirmado</option>
+                <option value="4">Finalizado</option>
                 <!-- Agrega más opciones según sea necesario -->
             </select>
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
@@ -50,3 +51,27 @@
  {{ __('Enviar') }}</button>
     </div>
 </div>
+
+
+
+
+<!-- con este script de abajo hacemos que no se peudan recibir minúsculas ni letras con tilde, utilizando jquery -->
+<script>
+$(document).ready(function() {
+  // Escucha el evento de cambio en los campos de entrada
+  $('input[type="text"]').on('input', function() {
+    // Verifica si el campo actual es el campo de excepción
+    if ($(this).attr('id') !== 'convertirAMinusculas') {
+      var inputValue = $(this).val();
+      var modifiedValue = inputValue.toUpperCase().replace(/[ÁÉÍÓÚáéíóúÜüÄËÏÖÜäëïöü`´]/g, function(letter) {
+        // Mapea las vocales con caracteres especiales a su versión sin tilde o dieresis
+        var vowelsWithAccent = 'ÁÉÍÓÚáéíóúÜüÄËÏÖÜäëïöü';
+        var vowelsWithoutAccent = 'AEIOUaeiouUuAEIOUaeiouUu';
+        var index = vowelsWithAccent.indexOf(letter);
+        return vowelsWithoutAccent.charAt(index);
+      });
+      $(this).val(modifiedValue);
+    }
+  });
+});
+</script>
