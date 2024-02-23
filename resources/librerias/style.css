@@ -132,3 +132,27 @@ select {
 .box-body {
 	margin-top: -0.6rem;
 }
+
+
+.text-md-end, .form-check-label {
+	color: #f4f4f4;
+}
+
+.btn-link {
+	color: #f4f4f4!important;
+	text-decoration: none!important;
+}
+
+.nav-link {
+	color: #f4f4f4!important;
+	font-size: 18px!important;
+}
+
+.navbar-nav {
+	margin-left: 4%;
+	margin-top: 0.2%;
+}
+
+.navbar-nav:hover {
+	background-color: #2F2F2F;
+}
