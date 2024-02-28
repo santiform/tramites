@@ -102,7 +102,7 @@ $(document).ready(function(){
             e.preventDefault();
 
             Swal.fire({
-              title: '¿Eliminar estudiante?',
+              title: '¿Eliminar venta?',
               text: "¡Esta acción no se puede revertir!",
               color: '#F4F4F4',
               icon: 'warning',
@@ -138,10 +138,10 @@ $(document).ready(function(){
                  Swal.fire({
           
           icon: 'error',
-          iconColor: '#A32226',
+          iconColor: '#ffdd00',
           color: '#F4F4F4',
-          background: '#E45D58',
-          title: 'Estudiante eliminado correctamente',
+          background: '#191919',
+          title: 'Venta eliminada correctamente',
           showConfirmButton: false,
           timer: 2500
         })
@@ -160,10 +160,10 @@ $(document).ready(function(){
                  Swal.fire({
           
           icon: 'success',
-          iconColor: '#A32226',
+          iconColor: '#ffdd00',
           color: '#F4F4F4',
-          background: '#E45D58',
-          title: 'Estudiante agregado correctamente',
+          background: '#191919',
+          title: 'Venta creada correctamente',
           showConfirmButton: false,
           timer: 2500
         })
@@ -182,10 +182,10 @@ $(document).ready(function(){
                  Swal.fire({
           
           icon: 'success',
-          iconColor: '#A32226',
+          iconColor: '#ffdd00',
           color: '#F4F4F4',
-          background: '#E45D58',
-          title: 'Estudiante modificado correctamente',
+          background: '#191919',
+          title: 'Venta modificada correctamente',
           showConfirmButton: false,
           timer: 2500
         })

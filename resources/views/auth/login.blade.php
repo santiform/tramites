@@ -40,11 +40,11 @@
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4" style="font-size: 17px;" >
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label"  for="remember">
                                         {{ __('Recordar datos') }}
                                     </label>
                                 </div>
@@ -54,7 +54,7 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="bi bi-box-arrow-in-right"></i> {{ __('Iniciar sesión') }}
+                                    <i class="bi bi-door-open-fill"></i></i> {{ __('Iniciar sesión') }}
                                 </button>
 
                                 @if (Route::has('password.request'))

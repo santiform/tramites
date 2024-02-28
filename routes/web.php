@@ -21,3 +21,6 @@ Auth::routes();
 Route::resource('ventas', App\Http\Controllers\VentaController::class)->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::post('/ventas/create2', [App\Http\Controllers\VentaController::class, 'create2'])->name('ventas.create2')->middleware('auth');
+

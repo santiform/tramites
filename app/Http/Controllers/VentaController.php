@@ -50,6 +50,25 @@ class VentaController extends Controller
         return view('venta.create', compact('venta','estados','tramites'));
     }
 
+    public function create2(Request $request)
+    {
+        $tipoDeTramite = $request->input('id_tramite');
+
+        if ($tipoDeTramite === "1") {
+            return view ('venta.create.aysa')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "2") {
+            return "Vista para trámite de Infracciones";
+        }
+
+        if ($tipoDeTramite === "3") {
+            return "Vista para trámite de VISA";
+        }
+
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -87,10 +106,25 @@ class VentaController extends Controller
      */
     public function edit($id)
     {
-        $venta = Venta::find($id);
+        $tipoDeTramite = DB::table('ventas')->where('id', $id)->value('id_tramite');
 
+        $venta = Venta::find($id);
         $tramites = DB::table('tramites')->get();        
-        $estados = DB::table('estados')->get();   
+        $estados = DB::table('estados')->get(); 
+
+        
+        if ($tipoDeTramite == "1") {
+            return view('venta.edit.aysa', compact('venta','estados','tramites'));
+        }
+
+        if ($tipoDeTramite == "2") {
+            return "Vista para trámite de Infracciones";
+        }
+
+        if ($tipoDeTramite == "3") {
+            return "Vista para trámite de VISA";
+        }
+     
 
         return view('venta.edit', compact('venta','estados','tramites'));
     }

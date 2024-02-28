@@ -31,11 +31,12 @@ class Venta extends Model
     public static $rules = [
         'id_tramite' => 'required',
         'cliente' => 'required',
+        'celular' => 'required',
         'costo' => 'nullable',
         'precio_venta' => 'nullable',
         'dato1' => 'nullable',
         'dato2' => 'nullable',
-        'dato3' => 'nullable', // Agregado dato3
+        'dato3' => 'nullable', 
         'dato4' => 'nullable',
         'observaciones' => 'nullable',
         'id_estado' => 'required',
@@ -49,11 +50,12 @@ class Venta extends Model
     protected $fillable = [
         'id_tramite',
         'cliente',
+        'celular',
         'costo',
         'precio_venta',
         'dato1',
         'dato2',
-        'dato3', // Agregado dato3
+        'dato3', 
         'dato4',
         'observaciones',
         'id_estado',

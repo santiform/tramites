@@ -16,11 +16,11 @@ body {
 
 .cuerpo {
 	background-color: #191919;
-	font-size: 21px;
+	font-size: 20px;
 }
 
 .navbar-brand {
-	font-size: 21px!important;
+	font-size: 20px!important;
 }
 
 .btn {
@@ -65,6 +65,10 @@ tbody {
 	border-radius: 0!important;
 }
 
+.btn-primary:hover{
+	background-color: #d2dcff!important;
+}
+
 .btn-success {
 	background-color: #a9ffd2!important;
 	color: #0d0d0d!important;
@@ -72,11 +76,19 @@ tbody {
 	border-radius: 0!important;
 }
 
+.btn-success:hover{
+	background-color: #cdffe5!important;
+}
+
 .btn-danger {
 	background-color: #ffc2a9!important;
 	color: #0d0d0d!important;
 	border: none!important;
-	border-radius: 0!important;s
+	border-radius: 0!important;
+}
+
+.btn-danger:hover{
+	background-color: #ffded0!important;
 }
 
 .navbar-dark {
@@ -106,6 +118,15 @@ input {
 	background-color: #dadada!important;
 }
 
+textarea {
+	border: none!important;
+	border-radius: 0!important;
+	box-shadow: none!important;
+	background-color: #dadada!important;
+	font-size: 17px!important;
+	padding: 0.8rem;
+}
+
 select {
 	border: none!important;
 	border-radius: 0!important;
@@ -126,7 +147,7 @@ select {
 }
 
 .card-default {
-	max-width: 35%;
+	max-width: 45%;
 }
 
 .box-body {
@@ -153,6 +174,6 @@ select {
 	margin-top: 0.2%;
 }
 
-.navbar-nav:hover {
+.nav-link:hover {
 	background-color: #2F2F2F;
 }
