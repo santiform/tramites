@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleDriveAuthController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +34,7 @@ Route::get('/estado/presupuesto/{id}', [App\Http\Controllers\VentaController::cl
 Route::get('/estado/confirmado/{id}', [App\Http\Controllers\VentaController::class, 'confirmado'])->name('estado.confirmado');
 
 Route::get('/estado/finalizado/{id}', [App\Http\Controllers\VentaController::class, 'finalizado'])->name('estado.finalizado');
+
+Route::get('/google/auth', [GoogleDriveAuthController::class, 'redirectToGoogle'])->name('google.auth');
+
+Route::get('/google/callback', [GoogleDriveAuthController::class, 'handleCallback'])->name('google.callback');
