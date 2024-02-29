@@ -24,3 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/ventas/create2', [App\Http\Controllers\VentaController::class, 'create2'])->name('ventas.create2')->middleware('auth');
 
+Route::get('/estado/solicitud/{id}', [App\Http\Controllers\VentaController::class, 'solicitud'])->name('estado.solicitud');
+
+Route::get('/estado/presupuesto/{id}', [App\Http\Controllers\VentaController::class, 'presupuesto'])->name('estado.presupuesto');
+
+Route::get('/estado/confirmado/{id}', [App\Http\Controllers\VentaController::class, 'confirmado'])->name('estado.confirmado');
+
+Route::get('/estado/finalizado/{id}', [App\Http\Controllers\VentaController::class, 'finalizado'])->name('estado.finalizado');

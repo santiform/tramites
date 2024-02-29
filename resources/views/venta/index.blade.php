@@ -185,7 +185,7 @@ $(document).ready(function(){
           iconColor: '#ffdd00',
           color: '#F4F4F4',
           background: '#191919',
-          title: 'Venta modificada correctamente',
+          title: 'Venta editada correctamente',
           showConfirmButton: false,
           timer: 2500
         })

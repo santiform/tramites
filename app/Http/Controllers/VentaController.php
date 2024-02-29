@@ -95,6 +95,30 @@ class VentaController extends Controller
     {
         $venta = Venta::find($id);
 
+        $tipoDeTramite = DB::table('ventas')->where('id', $id)->value('id_tramite');
+
+        $tipoTramiteLetras = DB::table('tramites')->where('id', $tipoDeTramite)->value('nombre');
+
+        $venta = Venta::find($id);
+
+        $ganancia = $venta->precio_venta - $venta->costo;
+
+        $estado = DB::table('ventas')->where('id', $id)->value('id_estado');
+
+        $estadoLetras = DB::table('estados')->where('id', $estado)->value('nombre');
+
+        if ($tipoDeTramite == "1") {
+            return view('venta.show.aysa', compact('venta','estadoLetras','tipoTramiteLetras', 'ganancia'));
+        }
+
+        if ($tipoDeTramite == "2") {
+            return "Vista para trámite de Infracciones";
+        }
+
+        if ($tipoDeTramite == "3") {
+            return "Vista para trámite de VISA";
+        }
+
         return view('venta.show', compact('venta'));
     }
 
@@ -157,5 +181,33 @@ class VentaController extends Controller
 
         return redirect()->route('ventas.index')
             ->with('borrar', 'ok');
+    }
+
+    public function solicitud($id) {
+        Venta::where('id', $id)->update(['id_estado' => '1']);
+        $venta = Venta::find($id);
+        return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id);
+    }
+
+    public function presupuesto($id) {
+        Venta::where('id', $id)->update(['id_estado' => '2']);
+        $venta = Venta::find($id);
+        return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id);
+    }
+
+    public function confirmado($id) {
+        Venta::where('id', $id)->update(['id_estado' => '3']);
+        $venta = Venta::find($id);
+        return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id);
+    }
+
+    public function finalizado($id) {
+        Venta::where('id', $id)->update(['id_estado' => '4']);
+        $venta = Venta::find($id);
+        return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id);
     }
 }

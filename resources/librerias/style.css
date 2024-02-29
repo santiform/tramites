@@ -36,6 +36,7 @@ body {
 .card-body {
 	background-color: #373737;
 	padding-top: 2rem!important;
+	color: #f4f4f4!important;
 }
 
 .card-header {
@@ -176,4 +177,149 @@ select {
 
 .nav-link:hover {
 	background-color: #2F2F2F;
+}
+
+.box-client {
+	background-color: #222222; /* Color de fondo */
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
+  padding: 1.5rem;
+  margin: 1rem;
+  margin-top: 0rem;
+}
+
+.box-client__icono {
+	text-align: center;
+	font-size: 13rem;
+	margin: -4rem;
+}
+
+.box-client__clienteNombre {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 700!important;
+	margin-bottom: 0.8rem;
+}
+
+.box-client__celular {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: 400!important;
+	margin-bottom: 0.4rem;
+}
+
+.box-tramite {
+	background-color: #222222; /* Color de fondo */
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
+  padding: 1.5rem;
+  margin: 1rem;
+  margin-top: 0rem;
+  font-size: 1.5rem;
+}
+
+.box-tramite__linea {
+	vertical-align: middle;
+	display: flex;
+}
+
+.box-tramite__valor {
+	font-weight: bolder;
+	text-align: center;
+	margin-top: -0.6rem;
+}
+
+.box-tramite__icono {
+	text-align: center;
+	font-size: 1.7rem;
+	margin-right: 0.9rem;
+}
+
+.box-tramite__espaciador {
+	height: 1.2rem;
+}
+
+.box-estado {
+	background-color: #222222; /* Color de fondo */
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
+  padding-inline: 1.6rem;
+  padding-block: 2.6rem;
+}
+
+.box-estado-doble-boton {
+  padding-block: 1rem;
+}
+
+.box-estado__icono {
+	text-align: center;
+	font-size: 4rem;
+	margin-right: 0.9rem;
+}
+
+.box-estado__valor {
+	font-weight: bolder;
+	text-align: center;
+	margin-top: -0.9rem;
+	font-size: 1.5rem;
+}
+
+.estadoSolicitud {
+	background-color: #D4A700;
+	padding-bottom: 1rem;
+	padding-top: 0.3rem;
+	margin-inline: 1.4rem;
+	margin-block: 0.8rem;
+	border-radius: 25px;
+	border: 5px solid #7d6200;
+}
+
+.estadoPresupuesto {
+	background-color: #E65100;
+	padding-bottom: 1rem;
+	padding-top: 0.3rem;
+	margin-top: -0.8rem;
+	margin-inline: 1.4rem;
+	border-radius: 25px;
+	border: 5px solid #7a2b00;
+}
+
+.estadoConfirmado {
+	background-color: #002171;
+	padding-bottom: 1rem;
+	padding-top: 0.3rem;
+	margin-top: -0.8rem;
+	margin-inline: 1.4rem;
+	border-radius: 25px;
+	border: 5px solid #001036;
+}
+
+.estadoFinalizado {
+	background-color: #003300;
+	padding-bottom: 1rem;
+	padding-top: 0.3rem;
+	margin-block: 0.8rem;
+	margin-inline: 1.4rem;
+	border-radius: 25px;
+	border: 5px solid #001600;
+}
+
+.btn-solicitud {
+	background-color: #D4A700!important;
+	color: #f4f4f4!important;
+	padding-inline: 1.6rem!important;
+}
+
+.btn-presupuesto {
+	background-color: #E65100!important;
+	color: #f4f4f4!important;
+}
+
+.btn-confirmado {
+	background-color: #002171!important;
+	color: #f4f4f4!important;
+	padding-inline: 0.9rem!important;
+}
+
+.btn-finalizado {
+	background-color: #003300!important;
+	color: #f4f4f4!important;
+	padding-inline: 1.15rem!important;
 }

@@ -16,7 +16,7 @@
                         <span class="card-title">{{ __('Editando Venta / Presupuesto de AySA') }}</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('ventas.update', $venta->id) }}"  role="form" enctype="multipart/form-data">
+                        <form class="alerta-editar" method="POST" action="{{ route('ventas.update', $venta->id) }}"  role="form" enctype="multipart/form-data">
                             
                             {{ method_field('PATCH') }}
                             @csrf
@@ -165,4 +165,35 @@
             </div>
         </div>
     </section>
+
+
+<script type="text/javascript">
+
+        $('.alerta-editar').submit(function(e){
+            e.preventDefault();
+
+            Swal.fire({
+              title: '¿Editar Venta?',
+              color: '#F4F4F4',
+              icon: 'warning',
+
+              iconColor: '#ffdd00',
+              showCancelButton: true,
+              confirmButtonColor: '#858585',
+              cancelButtonColor: '#373737',
+              cancelButtonText: 'No, cancelar',
+              confirmButtonText: 'Sí, editar',
+              background: '#191919',
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                this.submit();
+
+              }
+            })
+            
+        });
+
+</script>
+
 @endsection
