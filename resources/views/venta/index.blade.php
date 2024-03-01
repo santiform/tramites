@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('ventas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ __('') }}
+                                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ __('Nueva venta') }}
                                 </a>
                               </div>
                         </div>

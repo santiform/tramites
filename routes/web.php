@@ -31,6 +31,8 @@ Route::get('/estado/solicitud/{id}', [App\Http\Controllers\VentaController::clas
 
 Route::get('/estado/presupuesto/{id}', [App\Http\Controllers\VentaController::class, 'presupuesto'])->name('estado.presupuesto');
 
+Route::get('/estado/enviado/{id}', [App\Http\Controllers\VentaController::class, 'enviado'])->name('estado.enviado');
+
 Route::get('/estado/confirmado/{id}', [App\Http\Controllers\VentaController::class, 'confirmado'])->name('estado.confirmado');
 
 Route::get('/estado/finalizado/{id}', [App\Http\Controllers\VentaController::class, 'finalizado'])->name('estado.finalizado');

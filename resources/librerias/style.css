@@ -281,6 +281,16 @@ select {
 	border: 5px solid #7a2b00;
 }
 
+.estadoEnviado {
+	background-color: #4E342E;
+	padding-bottom: 1rem;
+	padding-top: 0.3rem;
+	margin-top: -0.8rem;
+	margin-inline: 1.4rem;
+	border-radius: 25px;
+	border: 5px solid #30211d;
+}
+
 .estadoConfirmado {
 	background-color: #002171;
 	padding-bottom: 1rem;
@@ -310,6 +320,12 @@ select {
 .btn-presupuesto {
 	background-color: #E65100!important;
 	color: #f4f4f4!important;
+}
+
+.btn-enviado {
+	background-color: #4E342E!important;
+	color: #f4f4f4!important;
+	padding-inline: 1.7rem!important;
 }
 
 .btn-confirmado {

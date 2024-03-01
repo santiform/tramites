@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-02-2024 a las 22:38:21
+-- Tiempo de generación: 01-03-2024 a las 15:26:09
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -39,8 +39,9 @@ CREATE TABLE `estados` (
 INSERT INTO `estados` (`id`, `nombre`) VALUES
 (1, 'Solicitud'),
 (2, 'Presupuesto'),
-(3, 'Confirmado'),
-(4, 'Finalizado');
+(3, 'Enviado al cliente'),
+(4, 'Confirmado'),
+(5, 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -106,6 +107,13 @@ CREATE TABLE `password_reset_tokens` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `password_reset_tokens`
+--
+
+INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
+('lucas13nemo@gmail.com', '$2y$12$Zb/Ie3wkFdvIsEIkYyIneecnZVBfqZ1gB7YhMOBUpWDeD9QaVl1hO', '2024-02-23 16:47:47');
+
 -- --------------------------------------------------------
 
 --
@@ -162,6 +170,13 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Lucas Nemo', 'lucas13nemo@gmail.com', NULL, '$2y$12$vHjhK007nknFX7CrkE39V.EbkDKQRsdfdJ9DwgLESN1zT7uYTfTou', 'HUeW6qxnmWqB6DG34XEouUUlnwjCSstOWRiK4jMxdamhTIn5qshQK60gTSme', '2024-02-23 16:34:13', '2024-02-23 16:34:13');
+
 -- --------------------------------------------------------
 
 --
@@ -172,6 +187,7 @@ CREATE TABLE `ventas` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_tramite` int(11) NOT NULL,
   `cliente` varchar(255) NOT NULL,
+  `celular` int(11) NOT NULL,
   `costo` int(11) DEFAULT NULL,
   `precio_venta` int(11) DEFAULT NULL,
   `dato1` varchar(255) DEFAULT NULL,
@@ -188,8 +204,9 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `costo`, `precio_venta`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
-(3, 1, 'eduardo', 23423, 35232341, NULL, NULL, NULL, NULL, NULL, 1, '2024-02-22 22:54:28', '2024-02-22 22:54:28');
+INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
+(4, 2, 'WALTER', 0, 1223, 49780, NULL, NULL, NULL, NULL, NULL, 1, '2024-02-28 02:05:15', '2024-02-28 02:05:15'),
+(5, 1, 'RAMON PEREZ', 1138338669, 450, 1000, 'SDA', 'SDASD', 'ASDASD', 'ASDAS', 'probando el text area', 5, '2024-02-28 03:13:33', '2024-03-01 17:25:40');
 
 --
 -- Índices para tablas volcadas
@@ -263,7 +280,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -293,13 +310,13 @@ ALTER TABLE `tramites`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

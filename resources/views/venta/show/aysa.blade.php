@@ -16,6 +16,7 @@
                                 {{ __('Mostrando Venta / Presupuesto de AySA') }}
                             </span>
 
+                            <a class="btn btn-sm btn-primary" href="{{ route('ventas.edit',$venta->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                              
                         </div>
                     </div>
@@ -47,6 +48,13 @@
                                     <div class="box-tramite__linea">
                                         <span class="box-tramite__icono" ><i class="bi bi-qr-code-scan"></i></span>
                                         <span>Trámite ID: <b>{{$venta->id}}</b></span>
+                                    </div>
+
+                                    <div class="box-tramite__espaciador"></div>
+
+                                    <div class="box-tramite__linea">
+                                        <span class="box-tramite__icono" ><i class="bi bi-qr-code-scan"></i></span>
+                                        <span>Tardanza: <b>agregar TIEMPO DE TARDANZA</b></span>
                                     </div>
 
                                     <div class="box-tramite__espaciador"></div>
@@ -100,11 +108,30 @@
                                         <div class="box-tramite__espaciador"></div>
 
                                         <center>
-                                            <a class="btn btn-sm btn-confirmado" href="{{ route('estado.confirmado',$venta->id) }}"><i class="bi bi-arrow-right-circle-fill"></i> Cambiar a Confirmado</a>
+                                            <a class="btn btn-sm btn-enviado" href="{{ route('estado.enviado',$venta->id) }}"><i class="bi bi-arrow-right-circle-fill"></i> Cambiar a Enviado</a>
 
                                             <div class="box-tramite__espaciador"></div>
 
                                             <a class="btn btn-sm btn-solicitud" href="{{ route('estado.solicitud',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Solicitud</a>
+                                        </center>
+
+                                    @endif
+
+                                    @if ($estadoLetras == "Enviado al cliente")
+
+                                        <div class="estadoEnviado" >
+                                            <div class="box-estado__icono"><i class="bi bi-send-exclamation"></i></div>
+                                            <div class="box-estado__valor">Enviado al cliente</div>
+                                        </div>
+
+                                        <div class="box-tramite__espaciador"></div>
+
+                                        <center>
+                                            <a class="btn btn-sm btn-confirmado" href="{{ route('estado.confirmado',$venta->id) }}"><i class="bi bi-arrow-right-circle-fill"></i> Cambiar a Confirmado</a>
+
+                                            <div class="box-tramite__espaciador"></div>
+
+                                            <a class="btn btn-sm btn-presupuesto" href="{{ route('estado.presupuesto',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Presupuesto</a>
                                         </center>
 
                                     @endif
@@ -123,7 +150,7 @@
 
                                             <div class="box-tramite__espaciador"></div>
 
-                                            <a class="btn btn-sm btn-presupuesto" href="{{ route('estado.presupuesto',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Presupuesto</a>
+                                            <a class="btn btn-sm btn-enviado" href="{{ route('estado.enviado',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Enviado</a>
                                         </center>
 
                                     @endif
@@ -184,6 +211,26 @@
         });
 
 </script>
+
+            
+    @if (session('editar')  == 'ok')
+
+     <script type="text/javascript">
+         
+                 Swal.fire({
+          
+          icon: 'success',
+          iconColor: '#ffdd00',
+          color: '#F4F4F4',
+          background: '#191919',
+          title: 'Venta editada correctamente',
+          showConfirmButton: false,
+          timer: 2500
+        })
+
+     </script>
+
+     @endif
 
 
 @endsection

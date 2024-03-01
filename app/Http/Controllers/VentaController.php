@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Session;
+
 /**
  * Class VentaController
  * @package App\Http\Controllers
@@ -136,9 +138,11 @@ class VentaController extends Controller
         $tramites = DB::table('tramites')->get();        
         $estados = DB::table('estados')->get(); 
 
+        $previousUrl = url()->previous();
+
         
         if ($tipoDeTramite == "1") {
-            return view('venta.edit.aysa', compact('venta','estados','tramites'));
+            return view('venta.edit.aysa', compact('venta','estados','tramites','previousUrl'));
         }
 
         if ($tipoDeTramite == "2") {
@@ -148,9 +152,8 @@ class VentaController extends Controller
         if ($tipoDeTramite == "3") {
             return "Vista para trámite de VISA";
         }
-     
 
-        return view('venta.edit', compact('venta','estados','tramites'));
+        return view('venta.edit', compact('venta','estados','tramites','previousUrl'));
     }
 
     /**
@@ -166,9 +169,11 @@ class VentaController extends Controller
 
         $venta->update($request->all());
 
-        return redirect()->route('ventas.index')
-            ->with('editar', 'ok');
+        // Redirigir al usuario a la URL anterior de la anterior
+        return redirect($request->input('previousUrl'))->with('editar', 'ok');
     }
+
+
 
     /**
      * @param int $id
@@ -197,15 +202,22 @@ class VentaController extends Controller
             ->with('id', $id);
     }
 
-    public function confirmado($id) {
+    public function enviado($id) {
         Venta::where('id', $id)->update(['id_estado' => '3']);
         $venta = Venta::find($id);
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
 
-    public function finalizado($id) {
+    public function confirmado($id) {
         Venta::where('id', $id)->update(['id_estado' => '4']);
+        $venta = Venta::find($id);
+        return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id);
+    }
+
+    public function finalizado($id) {
+        Venta::where('id', $id)->update(['id_estado' => '5']);
         $venta = Venta::find($id);
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);

@@ -125,6 +125,8 @@
                                     <textarea name="observaciones" rows="8" cols="68">{{ $venta->observaciones }}</textarea>
                                 </div>
 
+                                <input type="hidden" name="previousUrl" value="{{ $previousUrl }}">
+
                             </div>
                         </div>
 
