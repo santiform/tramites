@@ -56,10 +56,12 @@
                                             {!! $errors->first('celular', '<div class="invalid-feedback">:message</div>') !!}
                                         </div>
                                     </div>
-                                </div>        
+                                </div>    
+
+                                <div style="height: 1.3rem;" ></div>    
 
                                 <div class="row" >
-                                    <div class="col-6" >
+                                    <div class="col-4" >
                                         <div class="form-group">
                                         <label for="costo"><i class="bi bi-bank"></i> Costo ($)</label>
                                         {{ Form::text('costo', $venta->costo, ['class' => 'form-control' . ($errors->has('costo') ? ' is-invalid' : ''), 'placeholder' => 'Costo', 'required' => false]) }}
@@ -67,13 +69,31 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6" >
+                                    <div class="col-4" >
                                         <div class="form-group">
                                             <label for="precio_venta"><i class="bi bi-cash-coin"></i> Precio de Venta ($)</label>
                                             {{ Form::text('precio_venta', $venta->precio_venta, ['class' => 'form-control' . ($errors->has('precio_venta') ? ' is-invalid' : ''), 'placeholder' => 'Precio Venta']) }}
                                             {!! $errors->first('precio_venta', '<div class="invalid-feedback">:message</div>') !!}
                                         </div>
                                     </div>
+
+                                    <div class="col-4" >    
+                                        <label for="tardanza"><i class="bi bi-alarm"></i> Tardanza</label>
+                                        <select name="tardanza" id="tardanza" class="form-control{{ $errors->has('tardanza') ? ' is-invalid' : '' }}">
+                                            <option value="" {{ is_null($venta->tardanza) ? 'selected' : '' }} disabled>Seleccioná una opción</option>
+                                            <option value="48 hs" {{ old('estado') == '48 hs' || $venta->tardanza == '48 hs' ? 'selected' : '' }}>48 hs</option>
+                                            <option value="4 días" {{ old('estado') == '4 días' || $venta->tardanza == '4 días' ? 'selected' : '' }}>4 días</option>
+                                            <option value="5 días" {{ old('estado') == '5 días' || $venta->tardanza == '5 días' ? 'selected' : '' }}>5 días</option>
+                                            <option value="6 días" {{ old('estado') == '6 días' || $venta->tardanza == '6 días' ? 'selected' : '' }}>6 días</option>
+                                            <option value="1 semana" {{ old('estado') == '1 semana' || $venta->tardanza == '1 semana' ? 'selected' : '' }}>1 semana</option>
+                                            <option value="2 semanas" {{ old('estado') == '2 semanas' || $venta->tardanza == '2 semanas' ? 'selected' : '' }}>2 semanas</option>
+                                            <option value="3 semanas" {{ old('estado') == '3 semanas' || $venta->tardanza == '3 semanas' ? 'selected' : '' }}>3 semanas</option>
+                                            <option value="1 mes" {{ old('estado') == '1 mes' || $venta->tardanza == '1 mes' ? 'selected' : '' }}>1 mes</option>
+                                        </select>
+                                        {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
+
+                                    </div>
+
                                 </div>
 
 

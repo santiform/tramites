@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Mostrando Venta / Presupuesto de AySA') }}
+                                Mostrando Venta / Presupuesto de {{ $tipoTramiteLetras }}
                             </span>
 
                             <a class="btn btn-sm btn-primary" href="{{ route('ventas.edit',$venta->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
@@ -53,8 +53,15 @@
                                     <div class="box-tramite__espaciador"></div>
 
                                     <div class="box-tramite__linea">
-                                        <span class="box-tramite__icono" ><i class="bi bi-qr-code-scan"></i></span>
-                                        <span>Tardanza: <b>agregar TIEMPO DE TARDANZA</b></span>
+                                        <span class="box-tramite__icono" ><i class="bi bi-calendar-event"></i></span>
+                                        <span>Fecha de ingreso: <b>{{ \Carbon\Carbon::parse($venta->created_at)->format('d/m/Y') }}</b></span>
+                                    </div>
+
+                                    <div class="box-tramite__espaciador"></div>
+
+                                    <div class="box-tramite__linea">
+                                        <span class="box-tramite__icono" ><i class="bi bi-alarm"></i></span>
+                                        <span>Tardanza: <b>{{$venta->tardanza}}</b></span>
                                     </div>
 
                                     <div class="box-tramite__espaciador"></div>
@@ -74,7 +81,7 @@
                                     <div class="box-tramite__espaciador"></div>
 
                                     <div class="box-tramite__linea">
-                                        <span class="box-tramite__icono" ><i class="bi bi-stoplights"></i></span>
+                                        <span class="box-tramite__icono" ><i class="bi bi-piggy-bank"></i></span>
                                         <span>Ganacia: <b>${{$ganancia}}</b></span>
                                     </div>
                                 </div>      
@@ -178,6 +185,35 @@
                     </div>
                 </div>
            </div>
+        </div>
+    </div>
+
+
+    <div style="height: 2rem;" ></div>
+
+
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div class="row" >
+                        
+                        <div class="col-6" >
+                            <center><img src="https://localhost/tramites/resources/img/aysa.png"></center>
+                        </div>
+
+                        <div class="col-6" >
+                            <div class="box-tramite" >Tramite</div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

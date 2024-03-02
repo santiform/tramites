@@ -54,7 +54,7 @@
                                     </div>        
 
                                     <div class="row" >
-                                        <div class="col-6" >
+                                        <div class="col-4" >
                                             <div class="form-group">
                                             <label for="costo"><i class="bi bi-bank"></i> Costo ($)</label>
                                             {{ Form::text('costo', $venta->costo, ['class' => 'form-control' . ($errors->has('costo') ? ' is-invalid' : ''), 'placeholder' => 'Costo', 'required' => false]) }}
@@ -62,15 +62,38 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6" >
+                                        <div class="col-4" >
                                             <div class="form-group">
                                                 <label for="precio_venta"><i class="bi bi-cash-coin"></i> Precio de Venta ($)</label>
                                                 {{ Form::text('precio_venta', $venta->precio_venta, ['class' => 'form-control' . ($errors->has('precio_venta') ? ' is-invalid' : ''), 'placeholder' => 'Precio Venta']) }}
                                                 {!! $errors->first('precio_venta', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                         </div>
+
+                                        <div class="col-4">
+                                            <label for="id_estado"><i class="bi bi-alarm"></i> Tardanza</label>
+                                                <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+                                                    <option value="" selected disabled>Seleccioná una opción</option>
+                                                    <option value="24 hs"></i>24 hs</option>
+                                                    <option value="48 hs">48 hs</option>
+                                                    <option value="4 días">4 días</option>
+                                                    <option value="5 días">5 días</option>
+                                                    <option value="6 días">6 días</option>
+                                                    <option value="1 semana">1 semana</option>
+                                                    <option value="2 semanas">2 semanas</option>
+                                                    <option value="3 semanas">3 semanas</option>
+                                                    <option value="1 mes">1 mes</option>
+
+                                                    <!-- Agrega más opciones según sea necesario -->
+                                                </select>
+                                                {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
+                                        </div>   
+                                        
                                     </div>
 
+                                 
+                                             
+                                
                                     
                                     
                                     <div class="form-group">
