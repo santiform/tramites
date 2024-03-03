@@ -39,8 +39,21 @@
                     @if (Auth::check())
                         
                     <ul class="navbar-nav me-auto">
-                        <a class="nav-link" href="{{ route('ventas.index') }}">{{ __('Ventas') }}</a>
-                        <a class="nav-link" href="{{ route('ventas.index') }}">{{ __('Ventas') }}</a>
+
+
+                        <a class="nav-link" href="{{ route('ventas.solicitudes') }}">Solicitudes</a>
+                        <a class="nav-link" href="{{ route('ventas.presupuestos') }}">Presupuestos</a>
+                        <a class="nav-link" href="{{ route('ventas.enviados') }}">Enviados</a>
+                        <a class="nav-link" href="{{ route('ventas.confirmados') }}">Confirmados</a>
+                        <a class="nav-link" href="{{ route('ventas.finalizados') }}">Finalizados</a>
+
+
+
+                        
+
+
+
+
                     </ul>
                     @endif
 

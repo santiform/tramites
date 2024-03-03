@@ -3,56 +3,83 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Google\Client;
+use App\Models\Venta;
+
+
 
 class GoogleDriveAuthController extends Controller
 {
-    public function redirectToGoogle()
+    public function uploadPhoto(Request $request, $ventaId)
     {
+        // Buscar la venta en la base de datos
+        $venta = Venta::find($ventaId);
+
+        // Verificar si se encontró la venta
+        if (!$venta) {
+            // Devolver una respuesta de error si no se encontró la venta
+            return back()->with('error', 'La venta no fue encontrada.');
+        }
+
+        // Verificar si se ha enviado un archivo
+        if ($request->hasFile('photo')) {
+            // Obtener el archivo de la solicitud
+            $file = $request->file('photo');
+
+            // Subir la foto a Google Drive y obtener la URL de la foto
+            $photoUrl = $this->uploadToGoogleDrive($file);
+
+            dd($photoUrl);
+
+            // Asociar la URL de la foto con la venta correspondiente
+            $venta->dato1 = $photoUrl;
+            $venta->save();
+
+            // Devolver una respuesta de éxito
+            return "FOTO SUBIDA CORRECTAMENTE";
+        }
+
+        // Devolver una respuesta de error si no se envió ningún archivo
+        return back()->with('error', 'No se ha seleccionado ningún archivo.');
+    }
+
+    private function uploadToGoogleDrive($file)
+    {
+        // Configurar el cliente de Google
         $client = new Client();
         $client->setAuthConfig(storage_path('app/google/client_secret_1049060891734-0u1hugk9j4f3p96h530o6i490bc0eoer.apps.googleusercontent.com.json'));
-        $client->setAccessType('offline');
-        $client->setRedirectUri(route('google.callback'));
-        $client->addScope(\Google_Service_Drive::DRIVE);
+        $client->setScopes(\Google_Service_Drive::DRIVE);
+        $client->setAccessType('offline'); // Para obtener refresh token
 
-        return redirect()->to($client->createAuthUrl());
-    }
-
-    public function handleCallback(Request $request)
-{
-    $client = new \Google\Client();
-    $client->setAuthConfig(storage_path('app/google/client_secret_1049060891734-0u1hugk9j4f3p96h530o6i490bc0eoer.apps.googleusercontent.com.json'));
-    $client->setRedirectUri(route('google.callback'));
-
-    if ($request->has('code')) {
-        // Obtener el código de autorización de la solicitud HTTP
-        $authorizationCode = $request->query('code');
-
-        // Utilizar el código de autorización para obtener un token de acceso
-        $accessToken = $client->fetchAccessTokenWithAuthCode($authorizationCode);
-
-        // Verificar si se recibió un token de acceso válido
-        if (isset($accessToken['access_token'])) {
-            // Verifica si existe el refresh_token en la respuesta
-            if (isset($accessToken['refresh_token'])) {
-                $refreshToken = $accessToken['refresh_token'];
-                // Guarda $refreshToken de manera segura en tu base de datos
-
-                // Después de obtener el refreshToken, puedes redirigir a donde quieras
-                return redirect()->route('home');
-            } else {
-                // Manejar el caso donde no se proporcionó el refresh token
-                // Por ejemplo, podrías lanzar un error, redirigir a una página de error, o manejarlo de otra manera apropiada para tu aplicación.
-                return "no anda";
-            }
+        // Verificar si existe un token de acceso válido
+        if (!$client->isAccessTokenExpired()) {
+            // Subir la foto a Google Drive
+            $photoUrl = $this->uploadFile($client, $file);
+            return $photoUrl;
         } else {
-            // Manejar el caso donde no se recibió un token de acceso válido
-            // Por ejemplo, mostrar un mensaje de error al usuario o redirigirlo a una página de error
-            return "Error al obtener el token de acceso";
+            // Obtener un nuevo token de acceso utilizando el flujo de autorización de OAuth de Google
+            $authUrl = $client->createAuthUrl(); // Obtener la URL de autorización de Google
+            // Redirigir al usuario a la URL de autorización de Google para obtener un nuevo token de acceso
+            return redirect()->away($authUrl);
         }
-    } else {
-        // Manejar error de autorización
-        return "Error: No se recibió el código de autorización";
     }
-}
 
+    private function uploadFile($client, $file)
+    {
+        // Crear el servicio de Google Drive
+        $service = new \Google\Service\Drive($client);
+
+        // Subir la foto a Google Drive
+        $fileMetadata = new \Google\Service\Drive\DriveFile([
+            'name' => $file->getClientOriginalName(),
+        ]);
+        $content = file_get_contents($file->getRealPath());
+        $file = $service->files->create($fileMetadata, [
+            'data' => $content,
+            'mimeType' => $file->getClientMimeType(),
+            'uploadType' => 'multipart',
+        ]);
+
+        // Obtener la URL pública de la foto
+        return $file->getWebViewLink();
+    }
 }

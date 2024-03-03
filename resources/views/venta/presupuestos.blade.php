@@ -1,0 +1,2 @@
+
+@include('venta.index')

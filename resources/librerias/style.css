@@ -51,6 +51,10 @@ body {
 	background-color: #000000;
 }
 
+tr {
+	text-align: center!important;
+}
+
 tbody {
 	color: #f4f4f4!important;
 }
@@ -315,27 +319,32 @@ select {
 	background-color: #D4A700!important;
 	color: #f4f4f4!important;
 	padding-inline: 1.6rem!important;
+	border-radius: 0!important;
 }
 
 .btn-presupuesto {
 	background-color: #E65100!important;
 	color: #f4f4f4!important;
+	border-radius: 0!important;
 }
 
 .btn-enviado {
 	background-color: #4E342E!important;
 	color: #f4f4f4!important;
 	padding-inline: 1.7rem!important;
+	border-radius: 0!important;
 }
 
 .btn-confirmado {
 	background-color: #002171!important;
 	color: #f4f4f4!important;
 	padding-inline: 0.9rem!important;
+	border-radius: 0!important;
 }
 
 .btn-finalizado {
 	background-color: #003300!important;
 	color: #f4f4f4!important;
 	padding-inline: 1.15rem!important;
+	border-radius: 0!important;
 }

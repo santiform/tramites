@@ -100,42 +100,35 @@
                                 <div style="height: 1.3rem;" ></div>
                                 
 
-                                <div class="form-group">
-                                    <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
-                                    <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
-                                        <option value="" selected disabled>Seleccioná el estado del Trámite</option>
-                                        @foreach ($estados as $estado)
-                                            <option value="{{ $estado->id }}" {{ $venta['id_estado'] == $estado->id ? 'selected' : '' }}>{{ $estado->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                    {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-                                </div>
+                               
 
 
-                                <div style="height: 1.3rem;" ></div>
+                                
   
 
                                 <div class="row">
+
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="dato2">Dato 2</label>
-                                            <input type="text" id="dato2" name="dato2" placeholder="Dato2" class="form-control" value="{{ $venta['dato2'] }}">
+                                     <div class="form-group">
+                                            <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
+                                            <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+                                                <option value="" selected disabled>Seleccioná el estado del Trámite</option>
+                                                @foreach ($estados as $estado)
+                                                    <option value="{{ $estado->id }}" {{ $venta['id_estado'] == $estado->id ? 'selected' : '' }}>{{ $estado->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                            {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="dato3">Dato 3</label>
-                                            <input type="text" id="dato3" name="dato3" placeholder="Dato3" class="form-control" value="{{ $venta['dato3'] }}">
+                                            <label for="dato2">Número de cliente (AySA)</label>
+                                            <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" value="{{ $venta['dato1'] }}">
                                         </div>
                                     </div>
+                                   
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="dato4">Dato 4</label>
-                                    <input type="text" id="dato4" name="dato4" placeholder="Dato4" class="form-control" value="{{ $venta['dato4'] }}">
-                                </div>
-
 
                                 <div style="height: 1.3rem;" ></div>
 
@@ -146,6 +139,8 @@
                                 </div>
 
                                 <input type="hidden" name="previousUrl" value="{{ $previousUrl }}">
+
+                                
 
                             </div>
                         </div>

@@ -20,7 +20,7 @@ class VentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index2()
     {
         $ventas = DB::table('ventas')
             ->leftJoin('estados', 'ventas.id_estado', '=', 'estados.id')
@@ -36,6 +36,81 @@ class VentaController extends Controller
         
         return view('venta.index', compact('ventas','ganancia'));
     }
+
+
+
+        public function index()
+    {
+        $ventas = $this->getTodasLasVentas();
+        return view('venta.index', compact('ventas'));
+    }
+
+    public function getTodasLasVentas()
+    {
+        $ventas = DB::table('ventas')
+            ->leftJoin('estados', 'ventas.id_estado', '=', 'estados.id')
+            ->leftJoin('tramites', 'ventas.id_tramite', '=', 'tramites.id')
+            ->select('ventas.*', 'estados.nombre as nombre_estado', 'tramites.nombre as nombre_tramite')
+            ->get();
+
+        // Calcular la ganancia para cada venta
+        foreach ($ventas as $venta) {
+            $ganancia = $venta->precio_venta - $venta->costo;
+            $venta->ganancia = $ganancia;
+        }
+
+        return $ventas;
+    }
+
+    public function ventasSolicitudes()
+    {
+        $ventas = $this->getVentasByEstado('solicitud');
+        return view('venta.solicitudes', compact('ventas'));
+    }
+
+    public function ventasPresupuestos()
+    {
+        $ventas = $this->getVentasByEstado('presupuesto');
+        return view('venta.presupuestos', compact('ventas'));
+    }
+
+    public function ventasEnviados()
+    {
+        $ventas = $this->getVentasByEstado('enviado al cliente');
+        return view('venta.enviados', compact('ventas'));
+    }
+
+    public function ventasConfirmados()
+    {
+        $ventas = $this->getVentasByEstado('confirmado');
+        return view('venta.confirmados', compact('ventas'));
+    }
+
+    public function ventasFinalizados()
+    {
+        $ventas = $this->getVentasByEstado('finalizado');
+        return view('venta.finalizados', compact('ventas'));
+    }
+
+    public function getVentasByEstado($estado)
+    {
+        $ventas = DB::table('ventas')
+            ->leftJoin('estados', 'ventas.id_estado', '=', 'estados.id')
+            ->leftJoin('tramites', 'ventas.id_tramite', '=', 'tramites.id')
+            ->select('ventas.*', 'estados.nombre as nombre_estado', 'tramites.nombre as nombre_tramite')
+            ->where('estados.nombre', $estado)
+            ->get();
+
+        // Calcular la ganancia para cada venta
+        foreach ($ventas as $venta) {
+            $ganancia = $venta->precio_venta - $venta->costo;
+            $venta->ganancia = $ganancia;
+        }
+
+        return $ventas;
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -222,4 +297,24 @@ class VentaController extends Controller
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
+
+
+
+    public function solicitud2($id) {
+        $ventas = $this->getVentasByEstado('solicitud');
+
+        return redirect()->route('ventas.solicitudes', compact('ventas'));
+    }
+
+     public function presupuesto2($id) {
+
+        Venta::where('id', $id)->update(['id_estado' => '2']);
+
+        $ventas = $this->getVentasByEstado('presupuestos');
+
+        return back()->with('ventas', $ventas);
+
+    }
+
+
 }

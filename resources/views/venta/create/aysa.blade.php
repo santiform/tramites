@@ -35,27 +35,6 @@
                                     <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control">
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="dato2">Dato 2</label>
-                                            <input type="text" id="dato2" name="dato2" placeholder="Dato2" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="dato3">Dato 3</label>
-                                            <input type="text" id="dato3" name="dato3" placeholder="Dato3" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="dato4">Dato 4</label>
-                                    <input type="text" id="dato4" name="dato4" placeholder="Dato4" class="form-control">
-                                </div>
-
                                 <div class="form-group">
                                     <label for="dato1">Observaciones</label> <br>
                                     <textarea class="input" name="observaciones" rows="10" cols="44"></textarea>
