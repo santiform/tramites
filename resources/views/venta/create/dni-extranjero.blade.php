@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Nueva Venta / Presupuesto de AySA') }}</span>
+                        <span class="card-title">Nueva Venta / Presupuesto de DNI Extranjero</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ventas.store') }}"  role="form" enctype="multipart/form-data">
@@ -30,15 +30,34 @@
                         <div class="box box-info padding-1">
                             <div class="box-body">
 
-                                <div class="form-group">
-                                    <label for="dato1">Número de Cliente AySA</label>
-                                    <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control">
+                                <div class="row" >
+                                    <div class="col-12" >
+                                        <div class="form-group">
+                                            <p class="img_server" >(Más abajo tenés el DIVOX Image Server, copiá y pegá la URL cuando sea necesario)</p>
+                                            <label for="dato1">Cédula del pais donde nació: (Pegar URL)</label>
+                                            <input type="text" id="dato1" name="dato1" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="box-tramite__espaciador" ></div>
+                                    <div class="box-tramite__espaciador" ></div>
+
+                                    <iframe src="https://servidor.net.ar/imgServer/" height="570" frameborder="0"></iframe>
+
+                                    <div class="box-tramite__espaciador" ></div>
+
+                                    <div class="form-group">
+                                        <label for="dato1">Observaciones</label> <br>
+                                        <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
+                                    </div>
+
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="dato1">Observaciones</label> <br>
-                                    <textarea class="input" name="observaciones" rows="6" cols="44"></textarea>
-                                </div>
+                                
+
+
+
                             </div>
                         </div>
 

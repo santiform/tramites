@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Ventas') }}
+                                <i class="bi bi-list-check"></i> SOLICITUDES
                             </span>
 
                              <div class="float-right">
@@ -44,7 +44,7 @@
 										<th>Costo</th>
 										<th>Precio de Venta</th>
                                         <th>Ganancia</th>
-										<th>Estado</th>
+                                        <th><i class="bi bi-arrow-left-circle"></i> Mover a <i class="bi bi-arrow-right-circle"></i></th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -58,11 +58,16 @@
 											<td>${{ $venta->costo }}</td>
 											<td>${{ $venta->precio_venta }}</td>
                                             <td>${{ $venta->ganancia }}</td>
-											<td>{{ $venta->nombre_estado }} </td>
+                                            <td>
+                                                <form class="alerta-mover" action="{{ route('estado.presupuesto',$venta->id) }}" method="GET"><button class="btn btn-sm btn-presupuesto">Presupuesto <i class="bi bi-arrow-right-circle-fill"></i></form>
+
+                                            </td>
+
+
 
                                             <td>
                                                 <form class="alerta-eliminar" action="{{ route('ventas.destroy',$venta->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('ventas.show',$venta->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('') }}</a>
+                                                    <a class="btn btn-sm btn-primary" href="{{ route('ventas.show',$venta->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('ventas.edit',$venta->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('') }}</a>
                                                     @csrf
                                                     @method('DELETE')
@@ -118,16 +123,35 @@ $(document).ready(function(){
               if (result.isConfirmed) {
 
                 this.submit();
-
               }
             })
-            
         });
+</script>
 
+<script type="text/javascript">
 
-    
-    
+        $('.alerta-mover').submit(function(e){
+            e.preventDefault();
 
+            Swal.fire({
+              title: '¿Mover venta?',
+              color: '#F4F4F4',
+              icon: 'warning',
+
+              iconColor: '#ffdd00',
+              showCancelButton: true,
+              confirmButtonColor: '#858585',
+              cancelButtonColor: '#373737',
+              cancelButtonText: 'No, cancelar',
+              confirmButtonText: 'Sí, mover',
+              background: '#191919',
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                this.submit();
+              }
+            }) 
+        });
 </script>
 
 

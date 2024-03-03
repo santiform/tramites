@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Nueva Venta / Presupuesto de AySA') }}</span>
+                        <span class="card-title">Nueva Venta / Presupuesto de Partida Nacimiento</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ventas.store') }}"  role="form" enctype="multipart/form-data">
@@ -30,14 +30,32 @@
                         <div class="box box-info padding-1">
                             <div class="box-body">
 
-                                <div class="form-group">
-                                    <label for="dato1">Número de Cliente AySA</label>
-                                    <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control">
+                                <div class="row" >
+                                    <div class="col-6" >
+                                        <div class="form-group">
+                                            <label for="dato1">DNI</label>
+                                            <input type="text" id="dato1" name="dato1" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6" >
+                                        <div class="form-group">
+                                            <label for="dato2">Nacimiento</label>
+                                            <input type="date" id="dato2" name="dato2" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6" >
+                                        <div class="form-group">Localidad de Nacimiento</label>
+                                            <input type="date" id="dato2" name="dato2" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
                                     <label for="dato1">Observaciones</label> <br>
-                                    <textarea class="input" name="observaciones" rows="6" cols="44"></textarea>
+                                    <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
                                 </div>
                             </div>
                         </div>

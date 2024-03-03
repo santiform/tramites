@@ -46,6 +46,13 @@ body {
 	border-radius: 0!important;
 }
 
+
+.card-header span {
+	font-size: 32px;
+	margin-top: 0rem;
+	font-weight: 500;
+}
+
 .thead {
 	color: #f4f4f4!important;
 	background-color: #000000;
@@ -348,3 +355,23 @@ select {
 	padding-inline: 1.15rem!important;
 	border-radius: 0!important;
 }
+
+
+.alerta-mover {
+  display: inline-block;
+  margin-right: 0; /* Espacio entre los formularios */
+}
+
+
+.img_server { 
+ 	background-color: darkred;
+ 	font-weight: 400;
+ 	font-size: 16.2px;
+ 	text-align: center;
+ 	padding-block: 0.4rem;
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.3); 
+ }
+
+ .card-title {
+ 	font-size: 22px!important;
+ }

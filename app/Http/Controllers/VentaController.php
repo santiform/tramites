@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\URL;
+
 /**
  * Class VentaController
  * @package App\Http\Controllers
@@ -136,12 +138,57 @@ class VentaController extends Controller
         }
 
         if ($tipoDeTramite === "2") {
-            return "Vista para trámite de Infracciones";
+            return view ('venta.create.infracciones')->with('data', $request);
         }
 
         if ($tipoDeTramite === "3") {
             return "Vista para trámite de VISA";
         }
+
+        if ($tipoDeTramite === "5") {
+            return view ('venta.create.dni-extranjero')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "6") {
+            return view ('venta.create.cambio-titularidad')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "7") {
+            return view ('venta.create.antecedentes-penales')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "8") {
+            return view ('venta.create.afip')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "9") {
+            return view ('venta.create.anses')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "10") {
+            return view ('venta.create.arba')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "11") {
+            return view ('venta.create.certificacion-migratoria')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "12") {
+            return view ('venta.create.legalizaciones-internacionales')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "13") {
+            return view ('venta.create.partida-defuncion')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "14") {
+            return view ('venta.create.partida-matrimonio')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "15") {
+            return view ('venta.create.partida-nacimiento')->with('data', $request);
+        }
+
 
 
     }
@@ -157,6 +204,33 @@ class VentaController extends Controller
         request()->validate(Venta::$rules);
 
         $venta = Venta::create($request->all());
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
+            $ventas = $this->getVentasByEstado('solicitud');
+            return redirect()->route('ventas.solicitudes')->with('crear', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+            $ventas = $this->getVentasByEstado('presupuesto');
+            return redirect()->route('ventas.presupuestos')->with('crear', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect()->route('ventas.enviados')->with('crear', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+            $ventas = $this->getVentasByEstado('confirmado');
+            return redirect()->route('ventas.confirmados')->with('crear', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
+            $ventas = $this->getVentasByEstado('finalizado');
+            return redirect()->route('ventas.finalizados')->with('crear', 'ok');
+        }
 
         return redirect()->route('ventas.index')
             ->with('crear', 'ok');
@@ -244,6 +318,33 @@ class VentaController extends Controller
 
         $venta->update($request->all());
 
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
+            $ventas = $this->getVentasByEstado('solicitud');
+            return redirect()->route('ventas.solicitudes')->with('editar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+            $ventas = $this->getVentasByEstado('presupuesto');
+            return redirect()->route('ventas.presupuestos')->with('editar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect()->route('ventas.enviados')->with('editar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+            $ventas = $this->getVentasByEstado('confirmado');
+            return redirect()->route('ventas.confirmados')->with('editar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
+            $ventas = $this->getVentasByEstado('finalizado');
+            return redirect()->route('ventas.finalizados')->with('editar', 'ok');
+        }
+
         // Redirigir al usuario a la URL anterior de la anterior
         return redirect($request->input('previousUrl'))->with('editar', 'ok');
     }
@@ -259,6 +360,33 @@ class VentaController extends Controller
     {
         $venta = Venta::find($id)->delete();
 
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
+            $ventas = $this->getVentasByEstado('solicitud');
+            return redirect()->route('ventas.solicitudes')->with('borrar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+            $ventas = $this->getVentasByEstado('presupuesto');
+            return redirect()->route('ventas.presupuestos')->with('borrar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect()->route('ventas.enviados')->with('borrar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+            $ventas = $this->getVentasByEstado('confirmado');
+            return redirect()->route('ventas.confirmados')->with('borrar', 'ok');
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
+            $ventas = $this->getVentasByEstado('finalizado');
+            return redirect()->route('ventas.finalizados')->with('borrar', 'ok');
+        }
+
         return redirect()->route('ventas.index')
             ->with('borrar', 'ok');
     }
@@ -266,6 +394,15 @@ class VentaController extends Controller
     public function solicitud($id) {
         Venta::where('id', $id)->update(['id_estado' => '1']);
         $venta = Venta::find($id);
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+
+            $ventas = $this->getVentasByEstado('presupuesto');
+            return view('venta.presupuestos', compact('ventas'));
+        }
+
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
@@ -273,6 +410,23 @@ class VentaController extends Controller
     public function presupuesto($id) {
         Venta::where('id', $id)->update(['id_estado' => '2']);
         $venta = Venta::find($id);
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
+
+            $ventas = $this->getVentasByEstado('solicitud');
+            return view('venta.solicitudes', compact('ventas'));
+        }
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+
+            $ventas = $this->getVentasByEstado('enviado');
+            return view('venta.enviados', compact('ventas'));
+        }
+
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
@@ -280,6 +434,25 @@ class VentaController extends Controller
     public function enviado($id) {
         Venta::where('id', $id)->update(['id_estado' => '3']);
         $venta = Venta::find($id);
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+
+            $ventas = $this->getVentasByEstado('presupuesto');
+            return view('venta.presupuestos', compact('ventas'));
+        }
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+
+            $ventas = $this->getVentasByEstado('confirmado');
+            return view('venta.confirmados', compact('ventas'));
+        }
+
+
+        
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
@@ -287,6 +460,21 @@ class VentaController extends Controller
     public function confirmado($id) {
         Venta::where('id', $id)->update(['id_estado' => '4']);
         $venta = Venta::find($id);
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+
+            $ventas = $this->getVentasByEstado('enviado');
+            return view('venta.enviados', compact('ventas'));
+        }
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
+
+            $ventas = $this->getVentasByEstado('finalizado');
+            return view('venta.finalizados', compact('ventas'));
+        }
+
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
     }
@@ -294,26 +482,17 @@ class VentaController extends Controller
     public function finalizado($id) {
         Venta::where('id', $id)->update(['id_estado' => '5']);
         $venta = Venta::find($id);
+
+        $urlAnterior = URL::previous();
+
+        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+
+            $ventas = $this->getVentasByEstado('confirmado');
+            return view('venta.confirmados', compact('ventas'));
+        }
+
         return redirect()->route('ventas.show', compact('venta'))
             ->with('id', $id);
-    }
-
-
-
-    public function solicitud2($id) {
-        $ventas = $this->getVentasByEstado('solicitud');
-
-        return redirect()->route('ventas.solicitudes', compact('ventas'));
-    }
-
-     public function presupuesto2($id) {
-
-        Venta::where('id', $id)->update(['id_estado' => '2']);
-
-        $ventas = $this->getVentasByEstado('presupuestos');
-
-        return back()->with('ventas', $ventas);
-
     }
 
 

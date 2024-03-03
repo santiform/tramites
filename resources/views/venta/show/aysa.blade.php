@@ -2,7 +2,7 @@
 
 @section('content')
         
-@include('layouts.ventas.show.aysa')
+@include('layouts.ventas.show.general')
      <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">

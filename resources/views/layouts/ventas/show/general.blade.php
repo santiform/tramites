@@ -139,7 +139,7 @@
                                     @if ($estadoLetras == "Confirmado")
 
                                         <div class="estadoConfirmado" >
-                                            <div class="box-estado__icono"><i class="bi bi-check-circle-fill"></i></i></div>
+                                            <div class="box-estado__icono"><i class="bi bi-check-circle-fill"></i></div>
                                             <div class="box-estado__valor">Confirmado</div>
                                         </div>
                                         
