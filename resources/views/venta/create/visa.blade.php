@@ -30,7 +30,7 @@
                         <div class="box box-info padding-1">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="dato1">Observaciones</label> <br>
+                                    <label for="obsservaciones">Observaciones</label> <br>
                                     <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
                                 </div>
                             </div>

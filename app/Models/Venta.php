@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Venta extends Model
 {
-    protected $perPage = 20;
+    protected $perPage = 200;
 
     /**
      * Reglas de validación.
@@ -34,6 +34,7 @@ class Venta extends Model
         'celular' => 'required',
         'costo' => 'nullable',
         'precio_venta' => 'nullable',
+        'forma_pago' => 'nullable',
         'tardanza' => 'nullable',
         'dato1' => 'nullable',
         'dato2' => 'nullable',
@@ -54,6 +55,7 @@ class Venta extends Model
         'celular',
         'costo',
         'precio_venta',
+        'forma_pago',
         'tardanza',
         'dato1',
         'dato2',

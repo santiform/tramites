@@ -58,7 +58,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="dato1">Observaciones</label> <br>
+                                    <label for="observaciones">Observaciones</label> <br>
                                     <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
                                 </div>
                             </div>

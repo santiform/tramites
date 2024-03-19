@@ -91,4 +91,26 @@
      @endif
 
 
+
+@if (session('noFormaPago')  == 'ok')
+
+     <script type="text/javascript">
+         
+        Swal.fire({
+          title: "Error",
+          text: "Para confirmar un Presupuesto, primero tenés que establecer una forma de pago válida",
+          icon: "error",
+          background: '#191919', // Color de fondo
+          iconColor: '#ffdd00', // Color del ícono
+          color: '#f4f4f4',
+          confirmButtonColor: '#373737', // Color del botón de aceptar
+          confirmButtonText: 'Aceptar', // Texto del botón de aceptar
+
+        });
+
+     </script>
+
+     @endif     
+
+
 @endsection

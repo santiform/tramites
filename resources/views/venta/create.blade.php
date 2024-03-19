@@ -87,7 +87,45 @@
                                                     <!-- Agrega más opciones según sea necesario -->
                                                 </select>
                                                 {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-                                        </div>   
+                                        </div>
+
+
+                                        <div class="col-6">
+                                             <label for="forma_pago"><i class="bi bi-credit-card-2-back"></i> Forma de pago</label>
+                                                <select name="forma_pago" id="forma_pago" class="form-control{{ $errors->has('forma_pago') ? ' is-invalid' : '' }}">
+                                                    <option value="" selected disabled>Seleccioná una opción</option>
+                                                    <option value="A confirmar"></i>A confirmar</option>
+                                                    <option value="Efectivo">Efectivo</option>
+                                                    <option value="Santi Banco Provincia">Santi Banco Provincia</option>
+                                                    <option value="5 días">5 días</option>
+                                                    <option value="6 días">6 días</option>
+                                                    <option value="1 semana">1 semana</option>
+                                                    <option value="2 semanas">2 semanas</option>
+                                                    <option value="3 semanas">3 semanas</option>
+                                                    <option value="1 mes">1 mes</option>
+
+                                                    <!-- Agrega más opciones según sea necesario -->
+                                                </select>
+                                                {!! $errors->first('forma_pago', '<div class="invalid-feedback">:message</div>') !!}
+                                        </div>
+                                        
+
+
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                            <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
+                                            <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+                                                <option value="" selected disabled>Seleccioná el estado del Trámite</option>
+                                                <option value="1"></i> Solicitud </option>
+                                                <option value="2">Presupuesto</option>
+                                                <option value="3">Enviado al cliente</option>
+                                                <option value="4">Confirmado</option>
+                                                <option value="5">Finalizado</option>
+                                                <!-- Agrega más opciones según sea necesario -->
+                                            </select>
+                                            {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
+                                        </div>
+
                                         
                                     </div>
 
@@ -96,18 +134,7 @@
                                 
                                     
                                     
-                                    <div class="form-group">
-                                        <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
-                                        <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
-                                            <option value="" selected disabled>Seleccioná el estado del Trámite</option>
-                                            <option value="1"></i> Solicitud </option>
-                                            <option value="2">Presupuesto</option>
-                                            <option value="3">Confirmado</option>
-                                            <option value="4">Finalizado</option>
-                                            <!-- Agrega más opciones según sea necesario -->
-                                        </select>
-                                        {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
+                                    
 
 
 
@@ -180,6 +207,28 @@
         });
 
 </script>
+
+
+
+@if (session('noFormaPago')  == 'ok')
+
+     <script type="text/javascript">
+         
+        Swal.fire({
+          title: "Error",
+          text: "Si el trámite se encuentra Confirmado o Finalizado, tenés que establecer una forma de pago válida",
+          icon: "error",
+          background: '#191919', // Color de fondo
+          iconColor: '#ffdd00', // Color del ícono
+          color: '#f4f4f4',
+          confirmButtonColor: '#373737', // Color del botón de aceptar
+          confirmButtonText: 'Aceptar', // Texto del botón de aceptar
+
+        });
+
+     </script>
+
+     @endif
 
 
 @endsection

@@ -77,22 +77,22 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-4" >    
+                                    <div class="col-4">    
                                         <label for="tardanza"><i class="bi bi-alarm"></i> Tardanza</label>
                                         <select name="tardanza" id="tardanza" class="form-control{{ $errors->has('tardanza') ? ' is-invalid' : '' }}">
                                             <option value="" {{ is_null($venta->tardanza) ? 'selected' : '' }} disabled>Seleccioná una opción</option>
-                                            <option value="48 hs" {{ old('estado') == '48 hs' || $venta->tardanza == '48 hs' ? 'selected' : '' }}>48 hs</option>
-                                            <option value="4 días" {{ old('estado') == '4 días' || $venta->tardanza == '4 días' ? 'selected' : '' }}>4 días</option>
-                                            <option value="5 días" {{ old('estado') == '5 días' || $venta->tardanza == '5 días' ? 'selected' : '' }}>5 días</option>
-                                            <option value="6 días" {{ old('estado') == '6 días' || $venta->tardanza == '6 días' ? 'selected' : '' }}>6 días</option>
-                                            <option value="1 semana" {{ old('estado') == '1 semana' || $venta->tardanza == '1 semana' ? 'selected' : '' }}>1 semana</option>
-                                            <option value="2 semanas" {{ old('estado') == '2 semanas' || $venta->tardanza == '2 semanas' ? 'selected' : '' }}>2 semanas</option>
-                                            <option value="3 semanas" {{ old('estado') == '3 semanas' || $venta->tardanza == '3 semanas' ? 'selected' : '' }}>3 semanas</option>
-                                            <option value="1 mes" {{ old('estado') == '1 mes' || $venta->tardanza == '1 mes' ? 'selected' : '' }}>1 mes</option>
+                                            <option value="48 hs" {{ old('tardanza') == '48 hs' || $venta->tardanza == '48 hs' ? 'selected' : '' }}>48 hs</option>
+                                            <option value="4 días" {{ old('tardanza') == '4 días' || $venta->tardanza == '4 días' ? 'selected' : '' }}>4 días</option>
+                                            <option value="5 días" {{ old('tardanza') == '5 días' || $venta->tardanza == '5 días' ? 'selected' : '' }}>5 días</option>
+                                            <option value="6 días" {{ old('tardanza') == '6 días' || $venta->tardanza == '6 días' ? 'selected' : '' }}>6 días</option>
+                                            <option value="1 semana" {{ old('tardanza') == '1 semana' || $venta->tardanza == '1 semana' ? 'selected' : '' }}>1 semana</option>
+                                            <option value="2 semanas" {{ old('tardanza') == '2 semanas' || $venta->tardanza == '2 semanas' ? 'selected' : '' }}>2 semanas</option>
+                                            <option value="3 semanas" {{ old('tardanza') == '3 semanas' || $venta->tardanza == '3 semanas' ? 'selected' : '' }}>3 semanas</option>
+                                            <option value="1 mes" {{ old('tardanza') == '1 mes' || $venta->tardanza == '1 mes' ? 'selected' : '' }}>1 mes</option>
                                         </select>
-                                        {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-
+                                        {!! $errors->first('tardanza', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
+
 
                                 </div>
 
@@ -108,6 +108,18 @@
 
                                 <div class="row">
 
+                                    <div class="col-6">    
+                                        <label for="forma_pago"><i class="bi bi-credit-card-2-back"></i> Forma de pago</label>
+                                        <select name="forma_pago" id="forma_pago" class="form-control{{ $errors->has('tardanza') ? ' is-invalid' : '' }}">
+                                            <option value="" {{ is_null($venta->tardanza) ? 'selected' : '' }} disabled>Seleccioná una opción</option>
+                                            <option value="A confirmar" {{ old('forma_pago') == 'A confirmar' || $venta->forma_pago == 'A confirmar' ? 'selected' : '' }}>A confirmar</option>
+                                            <option value="Efectivo" {{ old('forma_pago') == 'Efectivo' || $venta->forma_pago == 'Efectivo' ? 'selected' : '' }}>Efectivo</option>
+                                            <option value="Santi Banco Provincia" {{ old('forma_pago') == 'Santi Banco Provincia' || $venta->forma_pago == 'Santi Banco Provincia' ? 'selected' : '' }}>Santi Banco Provincia</option>
+                                        </select>
+                                        {!! $errors->first('forma_pago', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+
+
                                     <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="id_estado"><i class="bi bi-hourglass-split"></i> Estado del trámite</label>
@@ -121,7 +133,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="dato2">Número de cliente (AySA)</label>
                                             <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" value="{{ $venta['dato1'] }}">

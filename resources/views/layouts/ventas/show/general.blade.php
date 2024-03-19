@@ -20,7 +20,7 @@
 
                             
 
-                            <div class="col-4" >
+                            <div class="col-3" >
                                 <div class="box-client" >
                                     <div class="box-client__icono"><i class="bi bi-person-vcard"></i></div>
                                     <div class="box-client__clienteNombre">{{ $venta->cliente }}</div>
@@ -28,7 +28,7 @@
                                 </div>
                             </div>    
 
-                            <div class="col-5" > 
+                            <div class="col-6" > 
                                 <div class="box-tramite" >
 
                                     <div class="box-tramite__linea">
@@ -69,6 +69,13 @@
                                     <div class="box-tramite__linea">
                                         <span class="box-tramite__icono" ><i class="bi bi-cash-coin"></i></span>
                                         <span>Precio de Venta: <b>${{$venta->precio_venta}}</b></span>
+                                    </div>
+
+                                    <div class="box-tramite__espaciador"></div>
+
+                                    <div class="box-tramite__linea">
+                                        <span class="box-tramite__icono" ><i class="bi bi-credit-card-2-back"></i></span>
+                                        <span>Forma de pago: <b>{{$venta->forma_pago}}</b></span>
                                     </div>
 
                                     <div class="box-tramite__espaciador"></div>
