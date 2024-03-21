@@ -20,7 +20,7 @@
 
                             
 
-                            <div class="col-3" >
+                            <div class="col-4" >
                                 <div class="box-client" >
                                     <div class="box-client__icono"><i class="bi bi-person-vcard"></i></div>
                                     <div class="box-client__clienteNombre">{{ $venta->cliente }}</div>
@@ -28,7 +28,7 @@
                                 </div>
                             </div>    
 
-                            <div class="col-6" > 
+                            <div class="col-5" > 
                                 <div class="box-tramite" >
 
                                     <div class="box-tramite__linea">
@@ -82,7 +82,7 @@
 
                                     <div class="box-tramite__linea">
                                         <span class="box-tramite__icono" ><i class="bi bi-piggy-bank"></i></span>
-                                        <span>Ganacia: <b>${{$ganancia}}</b></span>
+                                        <span>Ganancia: <b>${{$ganancia}}</b></span>
                                     </div>
                                 </div>      
 

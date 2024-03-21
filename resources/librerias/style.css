@@ -31,12 +31,14 @@ body {
 	border-radius: 0px!important;
 	max-width: 95%;
 	margin: auto;
+	border: 1px solid white!important;
 }
 
 .card-body {
 	background-color: #373737;
 	padding-top: 2rem!important;
 	color: #f4f4f4!important;
+	padding-bottom: 2rem!important;
 }
 
 .card-header {
@@ -44,6 +46,7 @@ body {
 	color: #f4f4f4!important;
 	font-weight: 900!important;
 	border-radius: 0!important;
+
 }
 
 
@@ -120,7 +123,7 @@ tbody {
 	padding-top: 0.4rem;
 	padding-bottom: 0.4rem;
 	border-top: 1px solid #f4f4f4;
-    border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
 }
 
 input {
@@ -192,8 +195,8 @@ select {
 
 .box-client {
 	background-color: #222222; /* Color de fondo */
-  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
-  padding: 1.5rem;
+	border: 2px solid #575757;
+  padding: 2rem;
   margin: 1rem;
   margin-top: 0rem;
 }
@@ -206,25 +209,23 @@ select {
 
 .box-client__clienteNombre {
 	text-align: center;
-	font-size: 1.5rem;
 	font-weight: 700!important;
-	margin-bottom: 0.8rem;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
 }
 
 .box-client__celular {
 	text-align: center;
-	font-size: 1.3rem;
 	font-weight: 400!important;
 	margin-bottom: 0.4rem;
 }
 
 .box-tramite {
 	background-color: #222222; /* Color de fondo */
-  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
+	border: 2px solid #575757;
   padding: 1.5rem;
   margin: 1rem;
   margin-top: 0rem;
-  font-size: 1.5rem;
 }
 
 .box-tramite__linea {
@@ -240,23 +241,24 @@ select {
 
 .box-tramite__icono {
 	text-align: center;
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	margin-right: 0.9rem;
+	margin-top: -0.1rem;
 }
 
 .box-tramite__espaciador {
-	height: 1.2rem;
+	height: 0.8rem;
 }
 
 .box-estado {
 	background-color: #222222; /* Color de fondo */
-  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.2); /* Sombra casi blanca */
+	border: 2px solid #575757;
   padding-inline: 1.6rem;
-  padding-block: 2.6rem;
+  padding-block: 2.8rem;
 }
 
 .box-estado-doble-boton {
-  padding-block: 1rem;
+  padding-block: 0.9rem;
 }
 
 .box-estado__icono {

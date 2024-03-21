@@ -67,24 +67,44 @@ class VentaController extends Controller
     public function ventasSolicitudes()
     {
         $ventas = $this->getVentasByEstado('solicitud');
+
+        if ($ventas->isEmpty()) {
+        return view('venta.no-registros.solicitudes');
+        }
+
         return view('venta.solicitudes', compact('ventas'));
     }
 
     public function ventasPresupuestos()
     {
         $ventas = $this->getVentasByEstado('presupuesto');
+
+        if ($ventas->isEmpty()) {
+        return view('venta.no-registros.presupuestos');
+        }
+
         return view('venta.presupuestos', compact('ventas'));
     }
 
     public function ventasEnviados()
     {
         $ventas = $this->getVentasByEstado('enviado al cliente');
+
+        if ($ventas->isEmpty()) {
+        return view('venta.no-registros.enviados');
+        }
+
         return view('venta.enviados', compact('ventas'));
     }
 
     public function ventasConfirmados()
     {
         $ventas = $this->getVentasByEstado('confirmado');
+
+        if ($ventas->isEmpty()) {
+        return view('venta.no-registros.confirmados');
+        }
+
         return view('venta.confirmados', compact('ventas'));
     }
 
@@ -408,11 +428,10 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
 
             $ventas = $this->getVentasByEstado('presupuesto');
-            return view('venta.presupuestos', compact('ventas'));
+            return redirect()->route('ventas.presupuestos', compact('ventas'));
         }
 
-        return redirect()->route('ventas.show', compact('venta'))
-            ->with('id', $id);
+        return redirect()->route('ventas.show', compact('venta'));
     }
 
     public function presupuesto($id) {
@@ -424,7 +443,7 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
 
             $ventas = $this->getVentasByEstado('solicitud');
-            return view('venta.solicitudes', compact('ventas'));
+            return redirect()->route('ventas.solicitudes', compact('ventas'));
         }
 
         $urlAnterior = URL::previous();
@@ -432,7 +451,7 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
 
             $ventas = $this->getVentasByEstado('enviado');
-            return view('venta.enviados', compact('ventas'));
+            return redirect()->route('ventas.enviados', compact('ventas'));
         }
 
         return redirect()->route('ventas.show', compact('venta'))
@@ -448,7 +467,7 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
 
             $ventas = $this->getVentasByEstado('presupuesto');
-            return view('venta.presupuestos', compact('ventas'));
+            return redirect()->route('ventas.presupuestos', compact('ventas'));
         }
 
         $urlAnterior = URL::previous();
@@ -456,7 +475,7 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
 
             $ventas = $this->getVentasByEstado('confirmado');
-            return view('venta.confirmados', compact('ventas'));
+            return redirect()->route('ventas.confirmados', compact('ventas'));
         }
         
         return redirect()->route('ventas.show', compact('venta'))
@@ -488,13 +507,13 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
 
             $ventas = $this->getVentasByEstado('enviado');
-            return view('venta.enviados', compact('ventas'));
+            return redirect()->route('ventas.enviados', compact('ventas'));
         }
 
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
 
             $ventas = $this->getVentasByEstado('finalizado');
-            return view('venta.finalizados', compact('ventas'));
+            return redirect()->route('ventas.finalizados', compact('ventas'));
         }
 
         return redirect()->route('ventas.show', compact('venta'))
@@ -510,7 +529,7 @@ class VentaController extends Controller
         if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
 
             $ventas = $this->getVentasByEstado('confirmado');
-            return view('venta.confirmados', compact('ventas'));
+            return redirect()->route('ventas.confirmados', compact('ventas'));
         }
 
         return redirect()->route('ventas.show', compact('venta'))

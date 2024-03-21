@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2024 a las 15:26:09
+-- Tiempo de generación: 21-03-2024 a las 09:37:45
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -151,7 +151,18 @@ CREATE TABLE `tramites` (
 INSERT INTO `tramites` (`id`, `nombre`) VALUES
 (1, 'AySA'),
 (2, 'Infracciones'),
-(3, 'VISA');
+(3, 'VISA'),
+(5, 'DNI Extranjero'),
+(6, 'Cambio de titularidad'),
+(7, 'Antecedentes Penales'),
+(8, 'AFIP'),
+(9, 'ANSES'),
+(10, 'ARBA'),
+(11, 'Certificación Migratoria'),
+(12, 'Legalizaciones Internacionales'),
+(13, 'Partida de defunción'),
+(14, 'Partida de matrimonio'),
+(15, 'Partida de nacimiento');
 
 -- --------------------------------------------------------
 
@@ -175,7 +186,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Lucas Nemo', 'lucas13nemo@gmail.com', NULL, '$2y$12$vHjhK007nknFX7CrkE39V.EbkDKQRsdfdJ9DwgLESN1zT7uYTfTou', 'HUeW6qxnmWqB6DG34XEouUUlnwjCSstOWRiK4jMxdamhTIn5qshQK60gTSme', '2024-02-23 16:34:13', '2024-02-23 16:34:13');
+(1, 'Lucas Nemo', 'lucas13nemo@gmail.com', NULL, '$2y$12$vHjhK007nknFX7CrkE39V.EbkDKQRsdfdJ9DwgLESN1zT7uYTfTou', 'HUeW6qxnmWqB6DG34XEouUUlnwjCSstOWRiK4jMxdamhTIn5qshQK60gTSme', '2024-02-23 16:34:13', '2024-02-23 16:34:13'),
+(2, 'Santiago Formichelli', 'santiform@gmail.com', NULL, '$2y$12$avfLHrRKied2NEkzVDe.Ku8b.BVdaoVtd6IYMbAq1t7i2c.QIzUnG', NULL, '2024-03-21 09:57:45', '2024-03-21 09:57:45');
 
 -- --------------------------------------------------------
 
@@ -190,6 +202,8 @@ CREATE TABLE `ventas` (
   `celular` int(11) NOT NULL,
   `costo` int(11) DEFAULT NULL,
   `precio_venta` int(11) DEFAULT NULL,
+  `forma_pago` varchar(255) DEFAULT NULL,
+  `tardanza` varchar(255) DEFAULT NULL,
   `dato1` varchar(255) DEFAULT NULL,
   `dato2` varchar(255) DEFAULT NULL,
   `dato3` varchar(255) DEFAULT NULL,
@@ -204,9 +218,9 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
-(4, 2, 'WALTER', 0, 1223, 49780, NULL, NULL, NULL, NULL, NULL, 1, '2024-02-28 02:05:15', '2024-02-28 02:05:15'),
-(5, 1, 'RAMON PEREZ', 1138338669, 450, 1000, 'SDA', 'SDASD', 'ASDASD', 'ASDAS', 'probando el text area', 5, '2024-02-28 03:13:33', '2024-03-01 17:25:40');
+INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
+(16, 1, 'CARLOS CARLOTA', 1550088852, 100, 670, 'Efectivo', '6 días', '1234', NULL, NULL, NULL, NULL, 2, '2024-03-04 01:06:35', '2024-03-21 11:37:12'),
+(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 11:36:44');
 
 --
 -- Índices para tablas volcadas
@@ -304,19 +318,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `tramites`
 --
 ALTER TABLE `tramites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
