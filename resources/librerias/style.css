@@ -358,6 +358,13 @@ select {
 	border-radius: 0!important;
 }
 
+.btn-whatsapp {
+	background-color: #075e54!important;
+	color: #25d366!important;
+	padding-inline: 1.46rem!important;
+	border-radius: 0!important;
+}
+
 
 .alerta-mover {
   display: inline-block;

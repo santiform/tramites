@@ -57,3 +57,8 @@ Route::get('/estado/enviado2/{id}', [App\Http\Controllers\VentaController::class
 Route::get('/estado/confirmado2/{id}', [App\Http\Controllers\VentaController::class, 'confirmado'])->name('estado.confirmado2')->middleware('auth');
 
 Route::get('/estado/finalizado2/{id}', [App\Http\Controllers\VentaController::class, 'finalizado'])->name('estado.finalizado2')->middleware('auth');
+
+
+Route::get('/whatsapp/{id}', [App\Http\Controllers\VentaController::class, 'whatsapp'])->name('whatsappComprobante')->middleware('auth');
+
+Route::get('/comprobante/{id}', [App\Http\Controllers\VentaController::class, 'comprobante'])->name('comprobante');

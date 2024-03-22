@@ -158,6 +158,12 @@
                                             <div class="box-tramite__espaciador"></div>
 
                                             <a class="btn btn-sm btn-enviado" href="{{ route('estado.enviado',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Enviado</a>
+
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+
+                                            <a class="btn btn-sm btn-whatsapp" href="{{ route('whatsapp',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
                                         </center>
 
                                     @endif
