@@ -81,6 +81,13 @@
                                     <div class="box-tramite__espaciador"></div>
 
                                     <div class="box-tramite__linea">
+                                        <span class="box-tramite__icono" ><i class="bi bi-clock-history"></i></span>
+                                        <span>Estado de pago: <b>{{$venta->estado_pago}}</b></span>
+                                    </div>
+
+                                    <div class="box-tramite__espaciador"></div>
+
+                                    <div class="box-tramite__linea">
                                         <span class="box-tramite__icono" ><i class="bi bi-piggy-bank"></i></span>
                                         <span>Ganancia: <b>${{$ganancia}}</b></span>
                                     </div>
@@ -163,7 +170,7 @@
                                             <div class="box-tramite__espaciador"></div>
                                             <div class="box-tramite__espaciador"></div>
 
-                                            <a class="btn btn-sm btn-whatsapp" href="{{ route('whatsapp',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
+                                            <a class="btn btn-sm btn-whatsapp" href="{{ route('whatsappComprobante',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
                                         </center>
 
                                     @endif

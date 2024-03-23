@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2024 a las 09:37:45
+-- Tiempo de generación: 23-03-2024 a las 18:50:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -203,6 +203,7 @@ CREATE TABLE `ventas` (
   `costo` int(11) DEFAULT NULL,
   `precio_venta` int(11) DEFAULT NULL,
   `forma_pago` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) NOT NULL,
   `tardanza` varchar(255) DEFAULT NULL,
   `dato1` varchar(255) DEFAULT NULL,
   `dato2` varchar(255) DEFAULT NULL,
@@ -218,9 +219,9 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
-(16, 1, 'CARLOS CARLOTA', 1550088852, 100, 670, 'Efectivo', '6 días', '1234', NULL, NULL, NULL, NULL, 2, '2024-03-04 01:06:35', '2024-03-21 11:37:12'),
-(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 11:36:44');
+INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `estado`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
+(16, 1, 'CARLOS CARLOTA', 1538338669, 100, 670, 'Efectivo', '', '6 días', '1234', NULL, NULL, NULL, NULL, 4, '2024-03-04 01:06:35', '2024-03-22 03:43:04'),
+(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 14:32:08');
 
 --
 -- Índices para tablas volcadas

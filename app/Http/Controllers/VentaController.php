@@ -488,6 +488,8 @@ class VentaController extends Controller
 
         $formaDePago = $venta->forma_pago;
 
+        $estadoPago = $venta->estado_pago;
+
         $urlAnterior = URL::previous();
 
         if ($formaDePago == "A confirmar" || $formaDePago === null) {
@@ -495,7 +497,10 @@ class VentaController extends Controller
             return redirect($urlAnterior)->with('noFormaPago', 'ok');
         }
 
-
+        if ($estadoPago == "A confirmar" || $formaDePago === null) {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect($urlAnterior)->with('noPago', 'ok');
+        }
 
 
         Venta::where('id', $id)->update(['id_estado' => '4']);
@@ -556,6 +561,8 @@ class VentaController extends Controller
         $venta = Venta::find($id);
 
         $tipoDeTramite = DB::table('tramites')->where('id', $venta->id_tramite)->value('nombre');
+
+
 
         return view('venta.comprobante.index', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
      }
