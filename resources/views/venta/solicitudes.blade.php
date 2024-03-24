@@ -7,12 +7,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="col-sm-12" >
+                <div class="card" >
+                    <div class="card-header card-solicitudes" >
+                        <div style="display: flex; justify-content: space-between; align-items: center; ">
 
-                            <span id="card_title">
+                            <span id="card_title" >
                                 <i class="bi bi-list-check"></i> SOLICITUDES
                             </span>
 

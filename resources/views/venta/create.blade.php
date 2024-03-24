@@ -97,8 +97,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="id_estado"><i class="bi bi-alarm"></i> Tardanza</label>
-                                                    <select name="id_estado" id="id_estado" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+                                                    <label for="tardanza"><i class="bi bi-alarm"></i> Tardanza</label>
+                                                    <select name="tardanza" id="tardanza" class="form-control{{ $errors->has('tardanza') ? ' is-invalid' : '' }}">
                                                         <option value="" selected disabled>Seleccioná una opción</option>
                                                         <option value="24 hs"></i>24 hs</option>
                                                         <option value="48 hs">48 hs</option>
@@ -110,7 +110,7 @@
                                                         <option value="3 semanas">3 semanas</option>
                                                         <option value="1 mes">1 mes</option>
                                                     </select>
-                                                    {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
+                                                    {!! $errors->first('tardanza', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
                                             

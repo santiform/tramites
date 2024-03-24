@@ -46,9 +46,27 @@ body {
 	color: #f4f4f4!important;
 	font-weight: 900!important;
 	border-radius: 0!important;
-
 }
 
+.card-solicitudes {
+	background-color: #D4A700!important;
+}
+
+.card-presupuestos {
+	background-color: #E65100!important;
+}
+
+.card-enviados {
+	background-color: #4E342E!important;
+}
+
+.card-confirmados {
+	background-color: #002171!important;
+}
+
+.card-finalizados {
+	background-color: #003300!important;
+}
 
 .card-header span {
 	font-size: 32px;
@@ -74,14 +92,14 @@ tbody {
 }
 
 .btn-primary{
-	background-color: #a9bdff!important;
+	background-color: #eaeaea!important;
 	color: #0d0d0d!important;
 	border: none!important;
 	border-radius: 0!important;
 }
 
 .btn-primary:hover{
-	background-color: #d2dcff!important;
+	background-color: #fafafa!important;
 }
 
 .btn-success {
