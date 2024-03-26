@@ -46,29 +46,29 @@
         text-align: center;
     }
     .id_tramite {
-        font-size: 80px;
-        font-weight: 700;
-        text-align: center;
-        margin-top: 0.7rem;
-        color: #EF8900;
+    	font-size: 80px;
+    	font-weight: 700;
+    	text-align: center;
+    	margin-top: 0.7rem;
+    	color: #128c7e;
     }
     .maxikiosko{
-        color: #128c7e;
-        font-size: 29px;
-        margin-bottom: -1.1rem;
-        margin-top: 0.3rem;
+    	color: #128c7e;
+    	font-size: 29px;
+    	margin-bottom: -1.1rem;
+    	margin-top: 0.3rem;
     }
     .barcode {
         text-align: center;
         margin-top: 20px;
     }
-    .naranja {
-        color: #EF8900;
+    .verde {
+        color: #128c7e;
         font-weight: 700;
     }
     .tick {
-        margin-bottom: -0.6rem;
-        margin-right: -0.1rem;
+        margin-bottom: -0.5rem;
+        margin-right: -0.3rem;
     }
 </style>
 </head>
@@ -78,8 +78,8 @@
     <h1>Solicitud de Compra</h1>
     <hr style="width: 110%; margin-left: -1.25rem;" >
     <p><strong>Tipo de Trámite:</strong> {{$tipoDeTramite}}</p>
-    <p><strong>Total a abonar:</strong> ${{$venta->precio_venta}}</p>
-    <p><strong>Estado:</strong> <img class="tick" src="https://localhost/tramites/resources/img/pendiente.png" height="30px" alt="QR"> <span class="naranja">PENDIENTE</span></p>
+    <p><strong>Total abonado:</strong> ${{$venta->precio_venta}}</p>
+    <p><strong>Estado:</strong> <img class="tick" src="https://localhost/tramites/resources/img/tick.png" height="30px" alt="QR"> <span class="verde">ABONADO</span></p>
     <div class="barcode">
         <img src="https://localhost/tramites/resources/img/qr.png" height="220px" alt="QR">
     </div>

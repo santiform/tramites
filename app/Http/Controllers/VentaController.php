@@ -562,9 +562,23 @@ class VentaController extends Controller
 
         $tipoDeTramite = DB::table('tramites')->where('id', $venta->id_tramite)->value('nombre');
 
+        $estadoPago = $venta->estado_pago;
+
+        if ($estadoPago == "Abonado") {
+
+            return view('venta.comprobante.abonado', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
+
+        }
+
+        
+
+        if ($estadoPago == "Pendiente" || $estadoPago == "A confirmar" || $estadoPago == null) {
+
+            return view('venta.comprobante.impago', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
+
+        }
 
 
-        return view('venta.comprobante.index', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
      }
 
 
