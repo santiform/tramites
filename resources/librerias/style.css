@@ -34,6 +34,10 @@ body {
  color: #f4f4f4;
 }
 
+.dropdown {
+	margin-right: 0.25rem!important;
+}
+
 .dropdown-item {
 	font-size: 14px!important;
 }
@@ -43,10 +47,16 @@ body {
 	color: #f4f4f4;
 	font-weight: 700;
 	letter-spacing: 0.8px;
-	margin-left: 1rem;
-	margin-right: 2rem;
+	margin-left: 0.4rem;
+	margin-right: -0.4rem;
 	padding-top: 2rem;
 }
+
+.plataforma:hover {
+	text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+}
+
+
 
 .btn {
 	font-size: 18px!important;
@@ -241,7 +251,7 @@ background-color: #E65100!important;
 }
 
 .link-presupuestos:hover {
-background-color: #ff6511!important;
+background-color: #FF6815!important;
 }
 
 .link-enviados {
@@ -249,7 +259,7 @@ background-color: #4E342E!important;
 }
 
 .link-enviados:hover {
-background-color: #71524b!important;
+background-color: #804E43!important;
 }
 
 .link-confirmados {

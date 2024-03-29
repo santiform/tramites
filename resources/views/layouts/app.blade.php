@@ -44,11 +44,11 @@
                     <ul class="navbar-nav me-auto">
 
 
-                        <a class="nav-link link-solicitudes" href="{{ route('ventas.solicitudes') }}">Solicitudes</a>
-                        <a class="nav-link link-presupuestos" style="" href="{{ route('ventas.presupuestos') }}">Presupuestos</a>
-                        <a class="nav-link link-enviados" style="" href="{{ route('ventas.enviados') }}">Enviados</a>
-                        <a class="nav-link link-confirmados" style="" href="{{ route('ventas.confirmados') }}">Confirmados</a>
-                        <a class="nav-link link-finalizados" style="" href="{{ route('ventas.finalizados') }}">Finalizados</a>
+                        <a class="nav-link link-solicitudes" href="{{ route('ventas.solicitudes') }}"><i class="bi bi-list-check"></i> Solicitudes</a>
+                        <a class="nav-link link-presupuestos" style="" href="{{ route('ventas.presupuestos') }}"><i class="bi bi-calculator"></i> Presupuestos</a>
+                        <a class="nav-link link-enviados" style="" href="{{ route('ventas.enviados') }}"><i class="bi bi-send-exclamation"></i> Enviados</a>
+                        <a class="nav-link link-confirmados" style="" href="{{ route('ventas.confirmados') }}"><i class="bi bi-check-circle-fill"></i> Confirmados</a>
+                        <a class="nav-link link-finalizados" style="" href="{{ route('ventas.finalizados') }}"><i class="bi bi-flag"></i> Finalizados</a>
 
 
 

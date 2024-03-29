@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
+@section('template_title')
+    {{ __('Create') }} Venta
+@endsection
 
+@section('content')
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -10,42 +13,37 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Editando Venta / Presupuesto de AySA') }}</span>
+                        <span class="card-title">Nueva Venta / Presupuesto de VISA EEUU</span>
                     </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('ventas.store') }}"  role="form" enctype="multipart/form-data">
+                            @csrf
 
-@include('layouts.ventas.edit.general')
+                        <input type="hidden" name="id_tramite" value="{{ $data->id_tramite }}">
+                        <input type="hidden" name="cliente" value="{{ $data->cliente }}">
+                        <input type="hidden" name="celular" value="{{ $data->celular }}">
+                        <input type="hidden" name="costo" value="{{ $data->costo }}">
+                        <input type="hidden" name="precio_venta" value="{{ $data->precio_venta }}">
+                        <input type="hidden" name="id_estado" value="{{ $data->id_estado }}">
 
-                        <div style="height: 2.7rem;" ></div> <hr> <div style="height: 4.4rem;" ></div>
 
                         <div class="box box-info padding-1">
                             <div class="box-body">
-
                                 <div class="form-group">
-                                            <label for="dato1">Número de cliente (AySA)</label>
-                                            <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" value="{{ $venta['dato1'] }}">
-                                        </div>
-                                    </div>
-                                   
+                                    <label for="obsservaciones">Observaciones</label> <br>
+                                    <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
                                 </div>
-
-                                <div style="height: 1.3rem;" ></div>
-
-
-                                <div class="form-group">
-                                    <label for="dato1">Observaciones</label> <br>
-                                    <textarea name="observaciones" rows="8" cols="68">{{ $venta->observaciones }}</textarea>
-                                </div>
-
-
-
-                            <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-fill"></i>
-                             {{ __('Modificar') }}</button>
-                            </div>
-
-
                             </div>
                         </div>
+
+
+                                <div class="box-footer mt20">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </i>
+                             {{ __('Enviar') }}</button>
+                                </div>
+                            </div>
+
 
 
 
@@ -76,35 +74,4 @@
             </div>
         </div>
     </section>
-
-
-<script type="text/javascript">
-
-        $('.alerta-editar').submit(function(e){
-            e.preventDefault();
-
-            Swal.fire({
-              title: '¿Editar Venta?',
-              color: '#F4F4F4',
-              icon: 'warning',
-
-              iconColor: '#ffdd00',
-              showCancelButton: true,
-              confirmButtonColor: '#858585',
-              cancelButtonColor: '#373737',
-              cancelButtonText: 'No, cancelar',
-              confirmButtonText: 'Sí, editar',
-              background: '#191919',
-            }).then((result) => {
-              if (result.isConfirmed) {
-
-                this.submit();
-
-              }
-            })
-            
-        });
-
-</script>
-
 @endsection

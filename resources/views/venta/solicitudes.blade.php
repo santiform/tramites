@@ -44,7 +44,7 @@
 										<th>Costo</th>
 										<th>Precio de Venta</th>
                                         <th>Ganancia</th>
-                                        <th><i class="bi bi-arrow-left-circle"></i> Mover a <i class="bi bi-arrow-right-circle"></i></th>
+                                        <th>Mover a <i class="bi bi-arrow-right-circle"></i></th>
 
                                         <th>Acciones</th>
                                     </tr>

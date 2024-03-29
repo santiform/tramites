@@ -10,7 +10,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Editando Venta / Presupuesto de AySA') }}</span>
+                        <span class="card-title">{{ __('Editando Venta / Presupuesto de AFIP') }}</span>
                     </div>
 
 @include('layouts.ventas.edit.general')
@@ -20,16 +20,25 @@
                         <div class="box box-info padding-1">
                             <div class="box-body">
 
-                                <div class="form-group">
-                                            <label for="dato1">Número de cliente (AySA)</label>
-                                            <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" value="{{ $venta['dato1'] }}">
-                                        </div>
-                                    </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                                <label for="dato1">Número de cuil</label>
+                                                <input type="text" id="dato1" name="dato1" placeholder="" class="form-control" value="{{ $venta['dato1'] }}">
+                                            </div>
+
+                                    <div class="form-group col-md-6">
+                                                <label for="dato2">Clave fiscal</label>
+                                                <input type="text" id="dato2" name="dato2" placeholder="" class="form-control" value="{{ $venta['dato2'] }}">
+                                            </div>
+                                </div>  
+
+                                                
+                                </div>
                                    
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>
-
 
                                 <div class="form-group">
                                     <label for="dato1">Observaciones</label> <br>

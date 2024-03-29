@@ -291,7 +291,7 @@ class VentaController extends Controller
         }
 
         if ($tipoDeTramite == "2") {
-            return "Vista para trámite de Infracciones";
+            return view('venta.show.infracciones', compact('venta','estadoLetras','tipoTramiteLetras', 'ganancia'));
         }
 
         if ($tipoDeTramite == "3") {
@@ -326,8 +326,8 @@ class VentaController extends Controller
             return "Vista para trámite de Infracciones";
         }
 
-        if ($tipoDeTramite == "3") {
-            return "Vista para trámite de VISA";
+        if ($tipoDeTramite == "8") {
+            return view('venta.edit.afip', compact('venta','estados','tramites','previousUrl'));
         }
 
         return view('venta.edit', compact('venta','estados','tramites','previousUrl'));
