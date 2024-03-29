@@ -497,7 +497,7 @@ class VentaController extends Controller
             return redirect($urlAnterior)->with('noFormaPago', 'ok');
         }
 
-        if ($estadoPago == "A confirmar" || $formaDePago === null) {
+        if ($estadoPago == "A confirmar" || $estadoPago == "Pendiente" || $estadoPago === null) {
             $ventas = $this->getVentasByEstado('enviado');
             return redirect($urlAnterior)->with('noPago', 'ok');
         }
@@ -526,6 +526,25 @@ class VentaController extends Controller
     }
 
     public function finalizado($id) {
+
+        $venta = Venta::find($id);
+
+        $formaDePago = $venta->forma_pago;
+
+        $estadoPago = $venta->estado_pago;
+
+        $urlAnterior = URL::previous();
+
+        if ($formaDePago == "A confirmar" || $formaDePago === null) {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect($urlAnterior)->with('noFormaPago', 'ok');
+        }
+
+        if ($estadoPago == "A confirmar" || $estadoPago == "Pendiente" || $estadoPago === null) {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect($urlAnterior)->with('noPago', 'ok');
+        }
+
         Venta::where('id', $id)->update(['id_estado' => '5']);
         $venta = Venta::find($id);
 
@@ -545,15 +564,38 @@ class VentaController extends Controller
 
         $venta = Venta::find($id);
 
+        if ($venta->id_estado == 3) {$estadoTramite = "Enviado";}
+        if ($venta->id_estado == 4) {$estadoTramite = "Confirmado";}
+        if ($venta->id_estado == 5) {$estadoTramite = "Finalizado";}
+
         $tipoDeTramite = DB::table('tramites')->where('id', $venta->id_tramite)->value('nombre');
 
-        $comprobante = "a";
+        $comprobante = "https://localhost/tramites/public/comprobante/" . $venta->id;
 
-        $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20a%20pagar*%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20comprobante%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
+        if ($estadoTramite == "Enviado") {
 
+            $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_Para iniciar el trámite, primero debés presentarte en el kiosko y abonar el costo del mismo._%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20a%20abonar*%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20cupón%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
 
+            return redirect($url);
+        }
 
-        return redirect($url);
+        if ($estadoTramite == "Confirmado") {
+
+            $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_Tu trámite ha sido confirmado y se encuentra en proceso, ¡muchas gracias!_%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20abonado%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20comprobante%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
+
+            return redirect($url);
+        }
+
+        if ($estadoTramite == "Finalizado") {
+
+            $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_¡Tu trámite se encuentra finalizado! Solicitá más info por este medio o acercate al kiosko._%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20abonado*%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20comprobante%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
+
+            return redirect($url);
+        }
+
+        $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_Tu trámite ha sido confirmado y se encuentra en proceso, ¡muchas gracias!_%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20abonado*%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20comprobante%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
+
+        
     }
 
      public function comprobante($id) {
@@ -565,17 +607,13 @@ class VentaController extends Controller
         $estadoPago = $venta->estado_pago;
 
         if ($estadoPago == "Abonado") {
-
             return view('venta.comprobante.abonado', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
-
         }
 
         
 
         if ($estadoPago == "Pendiente" || $estadoPago == "A confirmar" || $estadoPago == null) {
-
             return view('venta.comprobante.impago', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
-
         }
 
 

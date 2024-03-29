@@ -23,6 +23,31 @@ body {
 	font-size: 20px!important;
 }
 
+.sesion {
+ text-decoration: none;
+ color: #f4f4f4;
+ font-size: 17px;
+ font-style: italic;
+}
+
+.sesion:hover {
+ color: #f4f4f4;
+}
+
+.dropdown-item {
+	font-size: 14px!important;
+}
+
+.plataforma {
+	margin-top: 2.4rem!important;
+	color: #f4f4f4;
+	font-weight: 700;
+	letter-spacing: 0.8px;
+	margin-left: 1rem;
+	margin-right: 2rem;
+	padding-top: 2rem;
+}
+
 .btn {
 	font-size: 18px!important;
 }
@@ -200,15 +225,54 @@ select {
 .nav-link {
 	color: #f4f4f4!important;
 	font-size: 18px!important;
+	padding: 1rem!important;
 }
+
+.link-solicitudes {
+background-color: #d4a700!important;
+}
+
+.link-solicitudes:hover {
+background-color: #ffce16!important;
+}
+
+.link-presupuestos {
+background-color: #E65100!important;
+}
+
+.link-presupuestos:hover {
+background-color: #ff6511!important;
+}
+
+.link-enviados {
+background-color: #4E342E!important;
+}
+
+.link-enviados:hover {
+background-color: #71524b!important;
+}
+
+.link-confirmados {
+background-color: #002171!important;
+}
+
+.link-confirmados:hover {
+background-color: #093ab0!important;
+}
+
+.link-finalizados {
+background-color: #003300!important;
+}
+
+.link-finalizados:hover {
+background-color: #066c06!important;
+}
+
 
 .navbar-nav {
 	margin-left: 4%;
-	margin-top: 0.2%;
-}
-
-.nav-link:hover {
-	background-color: #2F2F2F;
+	margin-top: -0.5rem;
+	margin-bottom: -0.54rem!important;
 }
 
 .box-client {
@@ -353,6 +417,7 @@ select {
 	background-color: #E65100!important;
 	color: #f4f4f4!important;
 	border-radius: 0!important;
+	padding-inline: 0.59rem!important;
 }
 
 .btn-enviado {
@@ -382,6 +447,11 @@ select {
 	padding-inline: 1.46rem!important;
 	border-radius: 0!important;
 }
+
+.cupon {
+	padding-inline: 1.05rem!important;
+}
+
 
 
 .alerta-mover {

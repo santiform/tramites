@@ -79,7 +79,7 @@
     <hr style="width: 110%; margin-left: -1.25rem;" >
     <p><strong>Tipo de Trámite:</strong> {{$tipoDeTramite}}</p>
     <p><strong>Total a abonar:</strong> ${{$venta->precio_venta}}</p>
-    <p><strong>Estado:</strong> <img class="tick" src="https://localhost/tramites/resources/img/pendiente.png" height="30px" alt="QR"> <span class="naranja">PENDIENTE</span></p>
+    <p><strong>Estado de pago:</strong> <img class="tick" src="https://localhost/tramites/resources/img/pendiente.png" height="30px" alt="QR"> <span class="naranja">PENDIENTE</span></p>
     <div class="barcode">
         <img src="https://localhost/tramites/resources/img/qr.png" height="220px" alt="QR">
     </div>

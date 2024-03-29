@@ -9,6 +9,8 @@
 
     <title>Plataforma Trámites</title>
 
+    <link rel="icon" href="https://localhost/tramites/resources/img/logo.png">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -28,7 +30,8 @@
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class="bi bi-database-check"></i> Plataforma Trámites
+                    <img src="https://localhost/tramites/resources/img/logo.png" width="35px" >
+                    <span class="plataforma">Plataforma Trámites</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,11 +44,11 @@
                     <ul class="navbar-nav me-auto">
 
 
-                        <a class="nav-link" href="{{ route('ventas.solicitudes') }}">Solicitudes</a>
-                        <a class="nav-link" href="{{ route('ventas.presupuestos') }}">Presupuestos</a>
-                        <a class="nav-link" href="{{ route('ventas.enviados') }}">Enviados</a>
-                        <a class="nav-link" href="{{ route('ventas.confirmados') }}">Confirmados</a>
-                        <a class="nav-link" href="{{ route('ventas.finalizados') }}">Finalizados</a>
+                        <a class="nav-link link-solicitudes" href="{{ route('ventas.solicitudes') }}">Solicitudes</a>
+                        <a class="nav-link link-presupuestos" style="" href="{{ route('ventas.presupuestos') }}">Presupuestos</a>
+                        <a class="nav-link link-enviados" style="" href="{{ route('ventas.enviados') }}">Enviados</a>
+                        <a class="nav-link link-confirmados" style="" href="{{ route('ventas.confirmados') }}">Confirmados</a>
+                        <a class="nav-link link-finalizados" style="" href="{{ route('ventas.finalizados') }}">Finalizados</a>
 
 
 
@@ -78,7 +81,7 @@
                              -->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="dropdown-toggle sesion" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
                                 </a>
 

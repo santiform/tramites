@@ -146,7 +146,15 @@
                                             <div class="box-tramite__espaciador"></div>
 
                                             <a class="btn btn-sm btn-presupuesto" href="{{ route('estado.presupuesto',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Presupuesto</a>
-                                        </center>
+                                        
+
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+
+                                            <a class="btn btn-sm btn-whatsapp cupon" target="_blank" href="{{ route('whatsappComprobante',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar cupón de pago</a>
+
+                                        </center>    
 
                                     @endif
 
@@ -170,7 +178,7 @@
                                             <div class="box-tramite__espaciador"></div>
                                             <div class="box-tramite__espaciador"></div>
 
-                                            <a class="btn btn-sm btn-whatsapp" href="{{ route('whatsappComprobante',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
+                                            <a class="btn btn-sm btn-whatsapp" target="_blank" href="{{ route('whatsappComprobante',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
                                         </center>
 
                                     @endif
@@ -187,6 +195,12 @@
 
                                         <center>
                                             <a class="btn btn-sm btn-confirmado" href="{{ route('estado.confirmado',$venta->id) }}"><i class="bi bi-arrow-left-circle-fill"></i> Cambiar a Confirmado</a>
+
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+                                            <div class="box-tramite__espaciador"></div>
+
+                                            <a class="btn btn-sm btn-whatsapp" target="_blank" href="{{ route('whatsappComprobante',$venta->id) }}"><i class="bi bi-whatsapp"></i> Enviar comprobante</a>
                                         </center>
 
                                     @endif
