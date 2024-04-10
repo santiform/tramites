@@ -86,13 +86,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="estado_pago"><i class="bi bi-clock-history"></i> Estado pago</label>
-                                                    <select name="estado_pago" id="estado_pago" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}">
+                                                    <select name="estado_pago" id="estado_pago" class="form-control{{ $errors->has('estado_pago') ? ' is-invalid' : '' }}">
                                                         <option value="" selected disabled>Seleccioná una opción</option>
-                                                        <option value="A confirmar"></i> A confirmar </option>
-                                                        <option value="Pendiente"> Pendiente</option>
-                                                        <option value="Abonado"> Abonado</option>
+                                                        <option value="A confirmar">A confirmar</option>
+                                                        <option value="Pendiente">Pendiente</option>
+                                                        <option value="Abonado">Abonado</option>
                                                     </select>
-                                                    {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
+                                                    {!! $errors->first('estado_pago', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -230,6 +230,26 @@
      </script>
 
      @endif
+
+     @if (session('noPago')  == 'ok')
+
+     <script type="text/javascript">
+         
+        Swal.fire({
+          title: "Error",
+          text: "Para confirmar un Presupuesto, el trámite debe estar abonado (cambiar Estado pago)",
+          icon: "error",
+          background: '#191919', // Color de fondo
+          iconColor: '#ffdd00', // Color del ícono
+          color: '#f4f4f4',
+          confirmButtonColor: '#373737', // Color del botón de aceptar
+          confirmButtonText: 'Aceptar', // Texto del botón de aceptar
+
+        });
+
+     </script>
+
+     @endif  
 
 
 @endsection

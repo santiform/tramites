@@ -494,12 +494,12 @@ class VentaController extends Controller
 
         if ($formaDePago == "A confirmar" || $formaDePago === null) {
             $ventas = $this->getVentasByEstado('enviado');
-            return redirect($urlAnterior)->with('noFormaPago', 'ok');
+            return redirect()->route('ventas.enviados', compact('ventas'))->with('noFormaPago', 'ok');
         }
 
         if ($estadoPago == "A confirmar" || $estadoPago == "Pendiente" || $estadoPago === null) {
             $ventas = $this->getVentasByEstado('enviado');
-            return redirect($urlAnterior)->with('noPago', 'ok');
+            return redirect()->route('ventas.enviados', compact('ventas'))->with('noPago', 'ok');
         }
 
 

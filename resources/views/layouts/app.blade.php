@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="https://localhost/tramites/resources/img/logo.png" width="35px" >
+                    <img class="imgplataforma" src="https://localhost/tramites/resources/img/logo.png" width="35px" >
                     <span class="plataforma">Plataforma Trámites</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -49,6 +49,8 @@
                         <a class="nav-link link-enviados" style="" href="{{ route('ventas.enviados') }}"><i class="bi bi-send-exclamation"></i> Enviados</a>
                         <a class="nav-link link-confirmados" style="" href="{{ route('ventas.confirmados') }}"><i class="bi bi-check-circle-fill"></i> Confirmados</a>
                         <a class="nav-link link-finalizados" style="" href="{{ route('ventas.finalizados') }}"><i class="bi bi-flag"></i> Finalizados</a>
+
+                        <a class="nav-link link-otras" style="" href="{{ route('ventas.finalizados') }}"><i class="bi bi-menu-button-wide-fill"></i> Otras funciones</a>
 
 
 

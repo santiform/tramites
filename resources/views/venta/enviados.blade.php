@@ -243,6 +243,26 @@ $(document).ready(function(){
 
      @endif        
 
+@if (session('noPago')  == 'ok')
+
+     <script type="text/javascript">
+         
+        Swal.fire({
+          title: "Error",
+          text: "Para confirmar un Presupuesto, el trámite debe estar abonado (cambiar Estado pago)",
+          icon: "error",
+          background: '#191919', // Color de fondo
+          iconColor: '#ffdd00', // Color del ícono
+          color: '#f4f4f4',
+          confirmButtonColor: '#373737', // Color del botón de aceptar
+          confirmButtonText: 'Aceptar', // Texto del botón de aceptar
+
+        });
+
+     </script>
+
+     @endif    
+
 
 <!-- con este script de abajo hacemos que no se peudan recibir minúsculas ni letras con tilde, utilizando jquery -->
 <script>
