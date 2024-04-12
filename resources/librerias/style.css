@@ -139,7 +139,7 @@ tbody {
 
 .btn-primary:hover{
 	color: #d1d1d1!important;
-	background-color: #232323!important;
+	background-color: #000000!important;
 }
 
 .btn-success {
@@ -151,7 +151,7 @@ tbody {
 
 .btn-success:hover{
 	color: #13ff85!important;
-	background-color: #232323!important;
+	background-color: #000000!important;
 }
 
 .btn-danger {
@@ -163,7 +163,7 @@ tbody {
 
 .btn-danger:hover{
 	color: #ff1313!important;
-	background-color: #232323!important;
+	background-color: #000000!important;
 }
 
 .navbar-dark {
