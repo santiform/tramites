@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\URL;
 
+use Illuminate\Support\Facades\Storage;
+
 /**
  * Class VentaController
  * @package App\Http\Controllers
@@ -229,9 +231,30 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Venta::$rules);
+            // Validar el request según las reglas definidas
+            request()->validate(Venta::$rules);
 
-        $venta = Venta::create($request->all());
+            // Inicializar un array para almacenar los datos
+            $data = $request->all();
+
+            // Procesar archivo para dato2
+            if ($request->hasFile('dato2')) {
+                $file = $request->file('dato2');
+                $path = $file->store('uploads', 'public'); // Guardar en 'storage/app/public/uploads'
+                $data['dato2'] = Storage::url($path); // Obtener la URL pública
+            }
+
+            // Procesar archivo para dato3
+            if ($request->hasFile('dato3')) {
+                $file = $request->file('dato3');
+                $path = $file->store('uploads', 'public'); // Guardar en 'storage/app/public/uploads'
+                $data['dato3'] = Storage::url($path); // Obtener la URL pública
+            }
+
+            // Crear el nuevo registro en la base de datos con los datos procesados
+            $venta = Venta::create($data);
+
+        
 
         $urlAnterior = URL::previous();
 
@@ -323,7 +346,7 @@ class VentaController extends Controller
         }
 
         if ($tipoDeTramite == "2") {
-            return "Vista para trámite de Infracciones";
+            return view('venta.edit.infracciones', compact('venta','estados','tramites','previousUrl'));
         }
 
         if ($tipoDeTramite == "8") {

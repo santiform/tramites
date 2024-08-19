@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ __('Create') }} Venta
-@endsection
-
 @section('content')
+
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -13,65 +10,58 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Nueva Venta / Presupuesto de Infracciones</span>
+                        <span class="card-title">{{ __('Editando Venta / Presupuesto de Infracciones') }}</span>
                     </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('ventas.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
 
-                        <input type="hidden" name="id_tramite" value="{{ $data->id_tramite }}">
-                        <input type="hidden" name="cliente" value="{{ $data->cliente }}">
-                        <input type="hidden" name="celular" value="{{ $data->celular }}">
-                        <input type="hidden" name="costo" value="{{ $data->costo }}">
-                        <input type="hidden" name="precio_venta" value="{{ $data->precio_venta }}">
-                        <input type="hidden" name="id_estado" value="{{ $data->id_estado }}">
+@include('layouts.ventas.edit.general')
 
+                        <div style="height: 2.7rem;" ></div> <hr> <div style="height: 4.4rem;" ></div>
 
                         <div class="box box-info padding-1">
                             <div class="box-body">
 
-                                <div class="row" >
-                                    <div class="col-4" >
-                                        <div class="form-group">
+                                <div class="form-group">
                                             <label for="dato1">Patente</label>
-                                            <input type="text" id="dato1" name="dato1" placeholder="" class="form-control">
+                                            <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" value="{{ $venta['dato1'] }}">
                                         </div>
                                     </div>
-
-                                    <div class="col-4" >
-                                        <div class="form-group">
-                                            <label for="dato2">DNI</label>
-                                            <input type="text" id="dato2" name="dato2" placeholder="" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                            <label for="dato3">Zona</label>
-                                                <select name=" dato3" id=" dato3" class="form-control{{ $errors->has('dato2') ? ' is-invalid' : '' }}">
-                                                    <option value="" selected disabled>Seleccioná una opción</option>
-                                                    <option value="CABA"></i>CABA</option>
-                                                    <option value="Buenos Aires"></i>Buenos Aires</option>
-                                                    <!-- Agrega más opciones según sea necesario -->
-                                                </select>
-                                                {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-                                        </div> 
+                                   
                                 </div>
+
+                                <div style="height: 1.3rem;" ></div>
+
+
+                                <div class="form-group">
+                                    <label for="dato2">DNI Frente</label> <br>
+                                    <textarea name="dni-dorso" rows="1" cols="75">{{ $venta->dato2 }}</textarea>
+                                </div>
+
+                                <div style="height: 1.3rem;" ></div>
+
+
+                                <div class="form-group">
+                                    <label for="dato3">DNI Dorso</label> <br>
+                                    <textarea name="dni-frente" rows="1" cols="75">{{ $venta->dato3 }}</textarea>
+                                </div>
+
+                                <div style="height: 1.3rem;" ></div>
+
 
                                 <div class="form-group">
                                     <label for="observaciones">Observaciones</label> <br>
-                                    <textarea class="input" name="observaciones" rows="6" cols="68"></textarea>
+                                    <textarea name="observaciones" rows="8" cols="75">{{ $venta->dato4 }}</textarea>
                                 </div>
+
+
+
+                            <div class="box-footer mt20">
+                                    <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-fill"></i>
+                             {{ __('Modificar') }}</button>
+                            </div>
+
+
                             </div>
                         </div>
-
-
-                                <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            </i>
-                             {{ __('Enviar') }}</button>
-                                </div>
-                            </div>
-
 
 
 
@@ -102,4 +92,35 @@
             </div>
         </div>
     </section>
+
+
+<script type="text/javascript">
+
+        $('.alerta-editar').submit(function(e){
+            e.preventDefault();
+
+            Swal.fire({
+              title: '¿Editar Venta?',
+              color: '#F4F4F4',
+              icon: 'warning',
+
+              iconColor: '#ffdd00',
+              showCancelButton: true,
+              confirmButtonColor: '#858585',
+              cancelButtonColor: '#373737',
+              cancelButtonText: 'No, cancelar',
+              confirmButtonText: 'Sí, editar',
+              background: '#191919',
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                this.submit();
+
+              }
+            })
+            
+        });
+
+</script>
+
 @endsection

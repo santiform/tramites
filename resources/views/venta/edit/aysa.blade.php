@@ -32,7 +32,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="dato1">Observaciones</label> <br>
+                                    <label for="dato2">Observaciones</label> <br>
                                     <textarea name="observaciones" rows="8" cols="68">{{ $venta->observaciones }}</textarea>
                                 </div>
 
