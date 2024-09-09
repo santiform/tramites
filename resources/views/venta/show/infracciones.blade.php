@@ -63,7 +63,7 @@
                         <div class="col-6">
                             <div class="box-client">
                                     <span class="image-container">
-                                        <img src="{{ asset('' . $venta->dato2) }}" alt="Imagen">
+                                        <img src="{{ ($venta->dato2) }}" alt="DNI Frente">
                                     </span>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="col-6">
                             <div class="box-client">
                                     <span class="image-container">
-                                        <img src="{{ asset('' . $venta->dato3) }}" alt="Imagen">
+                                        <img src="{{$venta->dato3}}" alt="DNI Dorso">
                                     </span>
                             </div>
                         </div>

@@ -494,8 +494,14 @@ background-color: #af00b0!important;
  	text-align: center;
  	padding-block: 0.4rem;
   box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.3); 
+  vertical-align: middle;
  }
 
  .card-title {
  	font-size: 22px!important;
+ }
+
+
+.separador {
+ 	height: 2.8rem;
  }

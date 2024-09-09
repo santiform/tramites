@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-03-2024 a las 18:50:44
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Servidor: localhost
+-- Tiempo de generación: 09-09-2024 a las 18:23:01
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -203,7 +203,7 @@ CREATE TABLE `ventas` (
   `costo` int(11) DEFAULT NULL,
   `precio_venta` int(11) DEFAULT NULL,
   `forma_pago` varchar(255) DEFAULT NULL,
-  `estado` varchar(255) NOT NULL,
+  `estado_pago` varchar(255) DEFAULT NULL,
   `tardanza` varchar(255) DEFAULT NULL,
   `dato1` varchar(255) DEFAULT NULL,
   `dato2` varchar(255) DEFAULT NULL,
@@ -219,9 +219,11 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `estado`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
+INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `estado_pago`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
 (16, 1, 'CARLOS CARLOTA', 1538338669, 100, 670, 'Efectivo', '', '6 días', '1234', NULL, NULL, NULL, NULL, 4, '2024-03-04 01:06:35', '2024-03-22 03:43:04'),
-(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 14:32:08');
+(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 14:32:08'),
+(18, 2, 'GABRIEL FORMICHELLI', 1131462920, 1500, 14000, NULL, 'A confirmar', NULL, 'PKX869', '/storage/uploads/R8M7CSNrmgn4E4D9hltclLU7NT4yKSEAZMgHiUcK.jpg', '/storage/uploads/VRJluz2aCieYVic7zai9ELjE4WwyaVlz4gw7SUk1.jpg', 'CABA', NULL, 1, '2024-09-09 18:01:28', '2024-09-09 18:03:54'),
+(19, 2, 'GABRIEL FORMICHELLI', 1131462920, 1500, 14000, NULL, 'A confirmar', NULL, 'PKX869', 'https://servidor.net.ar/imgserver/uploads/image_66df178b949cd_1725896587.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66df179311b50_1725896595.jpg', 'CABA', 'CABA', 1, '2024-09-09 18:43:30', '2024-09-09 19:05:16');
 
 --
 -- Índices para tablas volcadas
@@ -331,7 +333,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas

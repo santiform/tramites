@@ -30,10 +30,19 @@
 
                                 <div style="height: 1.3rem;" ></div>
 
+                                <div class="col-12" >
+                                        <center>
+                                            <iframe src="https://servidor.net.ar/imgserver/" width="530px" height="570" frameborder="0"></iframe>
+                                        </center>
+
+                                        <div class="img_server">Generar URL arriba y pegar en DNI Frente y Dorso para modificar</div>                                        
+                                    </div>
+
+                                <div style="height: 2.3rem;" ></div>
 
                                 <div class="form-group">
                                     <label for="dato2">DNI Frente</label> <br>
-                                    <textarea name="dni-dorso" rows="1" cols="75">{{ $venta->dato2 }}</textarea>
+                                    <textarea name="dato2" rows="1" cols="75">{{ old('dato2', $venta->dato2) }}</textarea>
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>
@@ -41,7 +50,7 @@
 
                                 <div class="form-group">
                                     <label for="dato3">DNI Dorso</label> <br>
-                                    <textarea name="dni-frente" rows="1" cols="75">{{ $venta->dato3 }}</textarea>
+                                    <textarea name="dato3" rows="1" cols="75">{{ old('dato3', $venta->dato3) }}</textarea>
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>

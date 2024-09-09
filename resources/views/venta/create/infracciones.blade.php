@@ -61,24 +61,27 @@
                                                 {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
                                         </div> 
 
-                                     <!-- Carga de Imagen DNI lado A -->
+                                    <div class="separador" ></div>
+
+                                    <div class="col-12" >
+                                        <center>
+                                            <iframe src="https://servidor.net.ar/imgserver/" width="530px" height="570" frameborder="0"></iframe>
+                                        </center>
+
+                                        <div class="img_server">Generar URL arriba y pegar en DNI Frente y Dorso</div>                                        
+                                    </div>
+
+                                    <div class="separador" ></div>
+
                                     <div class="col-6">
-                                        <label for="dato2">DNI lado A</label>
-                                        <input type="file" id="dato2" name="dato2" class="form-control" accept="image/*" onchange="previewImage('dato2', 'preview1')">
-                                        <div class="imagen-contenedor">
-                                            <img id="preview1" src="#" alt="Vista previa" style="max-width: 150px; display:none; 
-                                        margin-top: 1.3rem; margin-bottom: 1.2rem; ">
-                                        </div>
+                                        <label for="dato2">DNI Frente(pegar link)</label>
+                                        <input type="text" id="dato2" name="dato2" placeholder="" class="form-control">
                                     </div>
 
                                     <!-- Carga de Imagen DNI lado B -->
                                     <div class="col-6">
-                                        <label for="dato3">DNI lado B</label>
-                                        <input type="file" id="dato3" name="dato3" class="form-control" accept="image/*" onchange="previewImage('dato3', 'preview2')">
-                                        <div class="imagen-contenedor">
-                                            <img id="preview2" src="#" alt="Vista previa" style="max-width: 150px; display:none; 
-                                        margin-top: 1.3rem; margin-bottom: 1.2rem; ">
-                                        </div>
+                                        <label for="dato3">DNI Dorso(pegar link))</label>
+                                        <input type="text" id="dato3" name="dato3" placeholder="" class="form-control">
                                     </div>
 
                                     
@@ -102,13 +105,12 @@
 
 
 
-                            <!-- con este script de abajo hacemos que no se peudan recibir minúsculas ni letras con tilde, utilizando jquery -->
                             <script>
                             $(document).ready(function() {
                               // Escucha el evento de cambio en los campos de entrada
                               $('input[type="text"]').on('input', function() {
-                                // Verifica si el campo actual es el campo de excepción
-                                if ($(this).attr('id') !== 'convertirAMinusculas') {
+                                // Excluir los campos 'dato2' y 'dato3' de la conversión
+                                if ($(this).attr('id') !== 'dato2' && $(this).attr('id') !== 'dato3') {
                                   var inputValue = $(this).val();
                                   var modifiedValue = inputValue.toUpperCase().replace(/[ÁÉÍÓÚáéíóúÜüÄËÏÖÜäëïöü`´]/g, function(letter) {
                                     // Mapea las vocales con caracteres especiales a su versión sin tilde o dieresis
@@ -123,23 +125,7 @@
                             });
                             </script>
 
-                             <!-- Script de previsualización de imagen -->
-                        <script>
-                            function previewImage(inputId, previewId) {
-                                var file = document.getElementById(inputId).files[0];
-                                var reader = new FileReader();
 
-                                reader.onload = function (e) {
-                                    var preview = document.getElementById(previewId);
-                                    preview.src = e.target.result;
-                                    preview.style.display = 'block';
-                                }
-
-                                if (file) {
-                                    reader.readAsDataURL(file);
-                                }
-                            }
-                        </script>
 
                         </form>
                     </div>
