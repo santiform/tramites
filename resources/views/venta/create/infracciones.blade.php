@@ -74,13 +74,13 @@
                                     <div class="separador" ></div>
 
                                     <div class="col-6">
-                                        <label for="dato2">DNI Frente(pegar link)</label>
+                                        <label for="dato2">DNI Frente (pegar link)</label>
                                         <input type="text" id="dato2" name="dato2" placeholder="" class="form-control">
                                     </div>
 
                                     <!-- Carga de Imagen DNI lado B -->
                                     <div class="col-6">
-                                        <label for="dato3">DNI Dorso(pegar link))</label>
+                                        <label for="dato3">DNI Dorso (pegar link)</label>
                                         <input type="text" id="dato3" name="dato3" placeholder="" class="form-control">
                                     </div>
 

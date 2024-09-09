@@ -35,19 +35,32 @@
                                     </div>
 
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="cliente"><i class="bi bi-person"></i> Nombre y Apellido</label>
                                                     {{ Form::text('cliente', $venta->cliente, ['class' => 'form-control' . ($errors->has('cliente') ? ' is-invalid' : ''), 'placeholder' => 'Cliente']) }}
                                                     {!! $errors->first('cliente', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="celular"><i class="bi bi-person"></i> Celular Cliente</label>
                                                     {{ Form::text('celular', $venta->celular, ['class' => 'form-control' . ($errors->has('celular') ? ' is-invalid' : ''), 'placeholder' => 'Celular']) }}
                                                     {!! $errors->first('celular', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="id_vendedor"><i class="bi bi-keyboard"></i> Vendedor</label>
+                                                    <select name="id_vendedor" id="id_vendedor" class="form-control{{ $errors->has('vendedor') ? ' is-invalid' : '' }}">
+                                                            <option value="" selected disabled>Seleccioná un tipo de trámite</option>
+                                                        <!-- Iterar sobre los tipos de trámite obtenidos en el controlador -->
+                                                        @foreach ($vendedores as $vendedor)
+                                                            <option value="{{ $vendedor->id }}">{{ $vendedor->nombre_vendedor }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    {!! $errors->first('vendedor', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                         </div>
 
@@ -59,6 +72,7 @@
                                                     {!! $errors->first('costo', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="precio_venta"><i class="bi bi-cash-coin"></i> Precio de Venta ($)</label>
@@ -66,7 +80,7 @@
                                                     {!! $errors->first('precio_venta', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="forma_pago"><i class="bi bi-credit-card-2-back"></i> Forma de pago</label>
@@ -95,6 +109,7 @@
                                                     {!! $errors->first('estado_pago', '<div class="invalid-feedback">:message</div>') !!}
                                                 </div>
                                             </div>
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="tardanza"><i class="bi bi-alarm"></i> Tardanza</label>
@@ -132,8 +147,6 @@
 
 
                                  
-                                             
-                                
                                     
                                     
                                     

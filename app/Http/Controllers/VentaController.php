@@ -145,10 +145,11 @@ class VentaController extends Controller
     {
         $venta = new Venta();
 
-        $tramites = DB::table('tramites')->get();        
+        $tramites = DB::table('tramites')->get();   
+        $vendedores = DB::table('vendedores')->get(); 
         $estados = DB::table('estados')->get();    
 
-        return view('venta.create', compact('venta','estados','tramites'));
+        return view('venta.create', compact('venta','estados','tramites','vendedores'));
     }
 
     public function create2(Request $request)
@@ -237,21 +238,6 @@ class VentaController extends Controller
             // Inicializar un array para almacenar los datos
             $data = $request->all();
 
-            // Procesar archivo para dato2
-            if ($request->hasFile('dato2')) {
-                $file = $request->file('dato2');
-                $path = $file->store('uploads', 'public'); // Guardar en 'storage/app/public/uploads'
-                $data['dato2'] = Storage::url($path); // Obtener la URL pública
-            }
-
-            // Procesar archivo para dato3
-            if ($request->hasFile('dato3')) {
-                $file = $request->file('dato3');
-                $path = $file->store('uploads', 'public'); // Guardar en 'storage/app/public/uploads'
-                $data['dato3'] = Storage::url($path); // Obtener la URL pública
-            }
-
-            // Crear el nuevo registro en la base de datos con los datos procesados
             $venta = Venta::create($data);
 
         
@@ -515,6 +501,27 @@ class VentaController extends Controller
 
         $urlAnterior = URL::previous();
 
+
+        if (($formaDePago == "A confirmar" || $formaDePago === null) && $urlAnterior !== 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id)
+            ->with('noFormaPago', 'ok');
+
+        }
+
+        if (($formaDePago == "A confirmar" || $formaDePago === null) && $urlAnterior !== 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+            $ventas = $this->getVentasByEstado('enviado');
+            return redirect()->route('ventas.show', compact('venta'))
+            ->with('id', $id)
+            ->with('noPago', 'ok');
+        }
+
+
+
+
+
+
         if ($formaDePago == "A confirmar" || $formaDePago === null) {
             $ventas = $this->getVentasByEstado('enviado');
             return redirect()->route('ventas.enviados', compact('ventas'))->with('noFormaPago', 'ok');
@@ -524,6 +531,11 @@ class VentaController extends Controller
             $ventas = $this->getVentasByEstado('enviado');
             return redirect()->route('ventas.enviados', compact('ventas'))->with('noPago', 'ok');
         }
+
+
+        
+
+
 
 
         Venta::where('id', $id)->update(['id_estado' => '4']);
