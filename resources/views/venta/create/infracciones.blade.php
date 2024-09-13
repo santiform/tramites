@@ -33,6 +33,7 @@
                         <input type="hidden" name="id_tramite" value="{{ $data->id_tramite }}">
                         <input type="hidden" name="cliente" value="{{ $data->cliente }}">
                         <input type="hidden" name="celular" value="{{ $data->celular }}">
+                        <input type="hidden" name="id_vendedor" value="{{ $data->id_vendedor }}">
                         <input type="hidden" name="costo" value="{{ $data->costo }}">
                         <input type="hidden" name="estado_pago" value="{{ $data->estado_pago }}">
                         <input type="hidden" name="precio_venta" value="{{ $data->precio_venta }}">
@@ -68,7 +69,10 @@
                                             <iframe src="https://servidor.net.ar/imgserver/" width="530px" height="570" frameborder="0"></iframe>
                                         </center>
 
-                                        <div class="img_server">Generar URL arriba y pegar en DNI Frente y Dorso</div>                                        
+                                        <div class="img_server">
+                                            Generar URL arriba y pegar en DNI y/o Cédula
+                                            <br> (solamente si es documentación requerida)
+                                        </div>                                        
                                     </div>
 
                                     <div class="separador" ></div>
@@ -82,6 +86,19 @@
                                     <div class="col-6">
                                         <label for="dato3">DNI Dorso (pegar link)</label>
                                         <input type="text" id="dato3" name="dato3" placeholder="" class="form-control">
+                                    </div>
+
+                                    <div class="separador" ></div>
+
+                                    <div class="col-6">
+                                        <label for="dato5">Cédula Frente (pegar link)</label>
+                                        <input type="text" id="dato5" name="dato5" placeholder="" class="form-control">
+                                    </div>
+
+                                    <!-- Carga de Imagen DNI lado B -->
+                                    <div class="col-6">
+                                        <label for="dato6">Cédula Dorso (pegar link)</label>
+                                        <input type="text" id="dato6" name="dato6" placeholder="" class="form-control">
                                     </div>
 
                                     

@@ -35,13 +35,16 @@
                                             <iframe src="https://servidor.net.ar/imgserver/" width="530px" height="570" frameborder="0"></iframe>
                                         </center>
 
-                                        <div class="img_server">Generar URL arriba y pegar en DNI Frente y Dorso para modificar</div>                                        
+                                        <div class="img_server">
+                                            Generar URL arriba y pegar en DNI y/o Cédula
+                                            <br> (solamente si es documentación requerida)
+                                        </div>                                         
                                     </div>
 
                                 <div style="height: 2.3rem;" ></div>
 
                                 <div class="form-group">
-                                    <label for="dato2">DNI Frente</label> <br>
+                                    <label for="dato2">DNI Frente (link a imagen)</label> <br>
                                     <textarea name="dato2" rows="1" cols="75">{{ old('dato2', $venta->dato2) }}</textarea>
                                 </div>
 
@@ -49,8 +52,23 @@
 
 
                                 <div class="form-group">
-                                    <label for="dato3">DNI Dorso</label> <br>
+                                    <label for="dato3">DNI Dorso (link a imagen)</label> <br>
                                     <textarea name="dato3" rows="1" cols="75">{{ old('dato3', $venta->dato3) }}</textarea>
+                                </div>
+
+                                <div style="height: 1.3rem;" ></div>
+
+                                <div class="form-group">
+                                    <label for="dato5">Cédula Frente (link a imagen)</label> <br>
+                                    <textarea name="dato5" rows="1" cols="75">{{ old('dato2', $venta->dato2) }}</textarea>
+                                </div>
+
+                                <div style="height: 1.3rem;" ></div>
+
+
+                                <div class="form-group">
+                                    <label for="dato6">Cédula Dorso (link a imagen)</label> <br>
+                                    <textarea name="dato6" rows="1" cols="75">{{ old('dato3', $venta->dato3) }}</textarea>
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>

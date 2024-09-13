@@ -605,7 +605,11 @@ class VentaController extends Controller
 
         $tipoDeTramite = DB::table('tramites')->where('id', $venta->id_tramite)->value('nombre');
 
-        $comprobante = "https://localhost/tramites/public/comprobante/" . $venta->id;
+        $token = $venta->token;
+
+        $formaDePago = $venta->forma_pago;
+
+        $comprobante = "https://localhost/tramites/public/" . $venta->token;
 
         if ($estadoTramite == "Enviado") {
 
@@ -614,9 +618,11 @@ class VentaController extends Controller
             return redirect($url);
         }
 
+
         if ($estadoTramite == "Confirmado") {
 
-            $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_Tu trámite ha sido confirmado y se encuentra en proceso, ¡muchas gracias!_%0A%0A📋%20*Tipo%20de%20tr%C3%A1mite*%20" . $tipoDeTramite . "%0A🎫%20*Tr%C3%A1mite%20ID*%3A%2015%0A%0A💲%20*Total%20abonado%3A%20$250000%0A%0A------------------------------------------%0A%0APod%C3%A9s%20visualizar%20👀%20el%20comprobante%20de%20pago%20%E2%9C%85%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
+
+            $url = "https://api.whatsapp.com/send/?phone=" . $venta->celular . "&text=%F0%9F%8F%AA%20*MAXIKIOSKO%20CRISTIANIA*%20%F0%9F%8F%AA%0A%0A_Tu%20trámite%20ha%20sido%20confirmado%20y%20se%20encuentra%20en%20proceso,%20¡muchas%20gracias!_%0A%0A🆔%20*Trámite%20ID*%3A%20" . $venta->id . "%0A💳%20*Forma%20de%20pago*%3A%20" . $formaDePago . "%0A📋%20*Tipo%20de%20trámite*%20" . $tipoDeTramite . "%0A%0A💲%20*Total%20abonado*%3A%20$250000%0A%0A------------------------------------------%0A%0APodés%20visualizar%20👀%20el%20cupón%20de%20pago%20✅%20en%20el%20siguiente%20link:%0A" . $comprobante . "&type=phone_number&app_absent=0";
 
             return redirect($url);
         }
@@ -633,22 +639,22 @@ class VentaController extends Controller
         
     }
 
-     public function comprobante($id) {
+     public function comprobante($token) {
 
-        $venta = Venta::find($id);
+        $venta = Venta::where('token', $token)->firstOrFail();
 
         $tipoDeTramite = DB::table('tramites')->where('id', $venta->id_tramite)->value('nombre');
 
         $estadoPago = $venta->estado_pago;
 
         if ($estadoPago == "Abonado") {
-            return view('venta.comprobante.abonado', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
+            return view('venta.comprobante.abonado', ['token' => $token, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
         }
 
         
 
         if ($estadoPago == "Pendiente" || $estadoPago == "A confirmar" || $estadoPago == null) {
-            return view('venta.comprobante.impago', ['id' => $id, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
+            return view('venta.comprobante.impago', ['token' => $token, 'venta' => $venta, 'tipoDeTramite' => $tipoDeTramite]);
         }
 
 

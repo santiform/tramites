@@ -61,4 +61,4 @@ Route::get('/estado/finalizado2/{id}', [App\Http\Controllers\VentaController::cl
 
 Route::get('/whatsapp/{id}', [App\Http\Controllers\VentaController::class, 'whatsappComprobante'])->name('whatsappComprobante')->middleware('auth');
 
-Route::get('/comprobante/{id}', [App\Http\Controllers\VentaController::class, 'comprobante'])->name('comprobante');
+Route::get('/{token}', [App\Http\Controllers\VentaController::class, 'comprobante'])->name('comprobante');

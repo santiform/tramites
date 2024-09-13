@@ -46,7 +46,7 @@
         text-align: center;
     }
     .id_tramite {
-    	font-size: 80px;
+    	font-size: 50px;
     	font-weight: 700;
     	text-align: center;
     	margin-top: 0.7rem;
@@ -85,7 +85,7 @@
     </div>
 
 
-    <div class="id_tramite" >{{$id}}</div>
+    <div class="id_tramite" >{{$token}}</div>
 
 </div>
 

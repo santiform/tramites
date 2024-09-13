@@ -3,22 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-/**
- * Class Venta
- *
- * @property $id
- * @property $tipo_tramite
- * @property $cliente
- * @property $costo
- * @property $precio_venta
- * @property $estado
- * @property $created_at
- * @property $updated_at
- *
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class Venta extends Model
 {
     protected $perPage = 200;
@@ -29,11 +15,12 @@ class Venta extends Model
      * @var array
      */
     public static $rules = [
+        'token' => 'nullable',
         'id_tramite' => 'required',
         'cliente' => 'required',
         'celular' => 'required',
+        'vendedor' => 'nullable',
         'costo' => 'nullable',
-        'vendedor' => 'required',
         'precio_venta' => 'nullable',
         'forma_pago' => 'nullable',
         'estado_pago' => 'nullable',
@@ -42,6 +29,8 @@ class Venta extends Model
         'dato2' => 'nullable',
         'dato3' => 'nullable', 
         'dato4' => 'nullable',
+        'dato5' => 'nullable',
+        'dato6' => 'nullable',
         'observaciones' => 'nullable',
         'id_estado' => 'required',
     ];
@@ -55,8 +44,8 @@ class Venta extends Model
         'id_tramite',
         'cliente',
         'celular',
-        'costo',
         'vendedor',
+        'costo',        
         'precio_venta',
         'forma_pago',
         'estado_pago',
@@ -65,11 +54,36 @@ class Venta extends Model
         'dato2',
         'dato3', 
         'dato4',
+        'dato5',
+        'dato6',
         'observaciones',
         'id_estado',
+        'token', // Agregamos el token al fillable
     ];
 
+    /**
+     * Evento boot para generar el token único cuando se crea un registro.
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        // Generar un token único antes de guardar el modelo
+        static::creating(function ($venta) {
+            $venta->token = self::generateUniqueToken();
+        });
+    }
 
+    /**
+     * Generar un token único de 6 caracteres.
+     */
+    public static function generateUniqueToken()
+    {
+        do {
+            // Generamos un token de 6 caracteres aleatorios
+            $token = Str::random(8);
+        } while (self::where('token', $token)->exists());
 
+        return $token;
+    }
 }
