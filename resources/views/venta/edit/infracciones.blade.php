@@ -60,7 +60,7 @@
 
                                 <div class="form-group">
                                     <label for="dato5">Cédula Frente (link a imagen)</label> <br>
-                                    <textarea name="dato5" rows="1" cols="75">{{ old('dato2', $venta->dato2) }}</textarea>
+                                    <textarea name="dato5" rows="1" cols="75">{{ old('dato2', $venta->dato5) }}</textarea>
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>
@@ -68,7 +68,7 @@
 
                                 <div class="form-group">
                                     <label for="dato6">Cédula Dorso (link a imagen)</label> <br>
-                                    <textarea name="dato6" rows="1" cols="75">{{ old('dato3', $venta->dato3) }}</textarea>
+                                    <textarea name="dato6" rows="1" cols="75">{{ old('dato3', $venta->dato6) }}</textarea>
                                 </div>
 
                                 <div style="height: 1.3rem;" ></div>

@@ -22,9 +22,15 @@
                         <input type="hidden" name="id_tramite" value="{{ $data->id_tramite }}">
                         <input type="hidden" name="cliente" value="{{ $data->cliente }}">
                         <input type="hidden" name="celular" value="{{ $data->celular }}">
+                        <input type="hidden" name="id_vendedor" value="{{ $data->id_vendedor }}">
                         <input type="hidden" name="costo" value="{{ $data->costo }}">
                         <input type="hidden" name="precio_venta" value="{{ $data->precio_venta }}">
+                        <input type="hidden" name="forma_pago" value="{{ $data->forma_pago }}">
+                        <input type="hidden" name="estado_pago" value="{{ $data->estado_pago }}">
+                        <input type="hidden" name="tardanza" value="{{ $data->tardanza }}">                        
                         <input type="hidden" name="id_estado" value="{{ $data->id_estado }}">
+
+                        <input type="hidden" name="urlOrigen" value="{{ $data->urlOrigen }}">
 
 
                         <div class="box box-info padding-1">
@@ -32,7 +38,7 @@
 
                                 <div class="form-group">
                                     <label for="dato1">Número de Cliente AySA</label>
-                                    <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control">
+                                    <input type="text" id="dato1" name="dato1" placeholder="Dato1" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">

@@ -147,9 +147,10 @@ class VentaController extends Controller
 
         $tramites = DB::table('tramites')->get();   
         $vendedores = DB::table('vendedores')->get(); 
-        $estados = DB::table('estados')->get();    
+        $estados = DB::table('estados')->get();   
+        $urlOrigen = URL::previous();
 
-        return view('venta.create', compact('venta','estados','tramites','vendedores'));
+        return view('venta.create', compact('venta','estados','tramites','vendedores', 'urlOrigen'));
     }
 
     public function create2(Request $request)
@@ -159,6 +160,9 @@ class VentaController extends Controller
         $formaDePago = $request->input('forma_pago');
 
         $estado = $request->input('id_estado');
+
+        $urlOrigen = $request->input('urlOrigen');
+
 
         if (($formaDePago == "A confirmar" || $formaDePago === null) && ($estado == 4 || $estado == 5)) {
             return redirect()->route('ventas.create')->with('noFormaPago', 'ok');
@@ -173,7 +177,11 @@ class VentaController extends Controller
         }
 
         if ($tipoDeTramite === "3") {
-            return "Vista para trámite de VISA";
+            return view ('venta.create.afip')->with('data', $request);
+        }
+
+        if ($tipoDeTramite === "4") {
+            return view ('venta.create.arba')->with('data', $request);
         }
 
         if ($tipoDeTramite === "5") {
@@ -240,31 +248,30 @@ class VentaController extends Controller
 
             $venta = Venta::create($data);
 
-        
 
-        $urlAnterior = URL::previous();
+        $urlOrigen = $request->input('urlOrigen');
 
-        if ($urlAnterior === 'https://localhost/tramites/public/ventas-solicitudes') {
+        if ($urlOrigen === 'https://localhost/tramites/public/ventas-solicitudes') {
             $ventas = $this->getVentasByEstado('solicitud');
             return redirect()->route('ventas.solicitudes')->with('crear', 'ok');
         }
 
-        if ($urlAnterior === 'https://localhost/tramites/public/ventas-presupuestos') {
+        if ($urlOrigen === 'https://localhost/tramites/public/ventas-presupuestos') {
             $ventas = $this->getVentasByEstado('presupuesto');
             return redirect()->route('ventas.presupuestos')->with('crear', 'ok');
         }
 
-        if ($urlAnterior === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
+        if ($urlOrigen === 'https://localhost/tramites/public/ventas-enviados-al-cliente') {
             $ventas = $this->getVentasByEstado('enviado');
             return redirect()->route('ventas.enviados')->with('crear', 'ok');
         }
 
-        if ($urlAnterior === 'https://localhost/tramites/public/ventas-confirmados') {
+        if ($urlOrigen === 'https://localhost/tramites/public/ventas-confirmados') {
             $ventas = $this->getVentasByEstado('confirmado');
             return redirect()->route('ventas.confirmados')->with('crear', 'ok');
         }
 
-        if ($urlAnterior === 'https://localhost/tramites/public/ventas-finalizados') {
+        if ($urlOrigen === 'https://localhost/tramites/public/ventas-finalizados') {
             $ventas = $this->getVentasByEstado('finalizado');
             return redirect()->route('ventas.finalizados')->with('crear', 'ok');
         }
@@ -335,8 +342,12 @@ class VentaController extends Controller
             return view('venta.edit.infracciones', compact('venta','estados','tramites','previousUrl'));
         }
 
-        if ($tipoDeTramite == "8") {
+        if ($tipoDeTramite == "3") {
             return view('venta.edit.afip', compact('venta','estados','tramites','previousUrl'));
+        }
+
+        if ($tipoDeTramite == "4") {
+            return view('venta.edit.arba', compact('venta','estados','tramites','previousUrl'));
         }
 
         return view('venta.edit', compact('venta','estados','tramites','previousUrl'));

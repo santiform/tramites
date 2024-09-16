@@ -35,9 +35,13 @@
                         <input type="hidden" name="celular" value="{{ $data->celular }}">
                         <input type="hidden" name="id_vendedor" value="{{ $data->id_vendedor }}">
                         <input type="hidden" name="costo" value="{{ $data->costo }}">
-                        <input type="hidden" name="estado_pago" value="{{ $data->estado_pago }}">
                         <input type="hidden" name="precio_venta" value="{{ $data->precio_venta }}">
+                        <input type="hidden" name="forma_pago" value="{{ $data->forma_pago }}">
+                        <input type="hidden" name="estado_pago" value="{{ $data->estado_pago }}">
+                        <input type="hidden" name="tardanza" value="{{ $data->tardanza }}">                        
                         <input type="hidden" name="id_estado" value="{{ $data->id_estado }}">
+
+                        <input type="hidden" name="urlOrigen" value="{{ $data->urlOrigen }}">
 
 
                         <div class="box box-info padding-1">
@@ -47,13 +51,13 @@
                                     <div class="col-6" >
                                         <div class="form-group">
                                             <label for="dato1">Patente</label>
-                                            <input type="text" id="dato1" name="dato1" placeholder="" class="form-control">
+                                            <input type="text" id="dato1" name="dato1" placeholder="" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                             <label for="dato4">Zona</label>
-                                                <select name=" dato4" id=" dato4" class="form-control{{ $errors->has('dato2') ? ' is-invalid' : '' }}">
+                                                <select name=" dato4" id=" dato4" class="form-control{{ $errors->has('dato2') ? ' is-invalid' : '' }}" required>
                                                     <option value="" selected disabled>Seleccioná una opción</option>
                                                     <option value="CABA"></i>CABA</option>
                                                     <option value="Buenos Aires"></i>Buenos Aires</option>

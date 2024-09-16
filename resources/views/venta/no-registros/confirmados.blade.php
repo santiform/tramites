@@ -49,5 +49,23 @@
         </div>
     </div>
 
+  @if (session('crear')  == 'ok')
+
+     <script type="text/javascript">
+         
+                 Swal.fire({
+          
+          icon: 'success',
+          iconColor: '#ffdd00',
+          color: '#F4F4F4',
+          background: '#191919',
+          title: 'Venta creada correctamente',
+          showConfirmButton: false,
+          timer: 2500
+        })
+
+     </script>
+
+     @endif
 
 @endsection
