@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-09-2024 a las 18:23:01
+-- Tiempo de generación: 16-09-2024 a las 18:07:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -151,18 +151,11 @@ CREATE TABLE `tramites` (
 INSERT INTO `tramites` (`id`, `nombre`) VALUES
 (1, 'AySA'),
 (2, 'Infracciones'),
-(3, 'VISA'),
-(5, 'DNI Extranjero'),
-(6, 'Cambio de titularidad'),
-(7, 'Antecedentes Penales'),
-(8, 'AFIP'),
-(9, 'ANSES'),
-(10, 'ARBA'),
-(11, 'Certificación Migratoria'),
-(12, 'Legalizaciones Internacionales'),
-(13, 'Partida de defunción'),
-(14, 'Partida de matrimonio'),
-(15, 'Partida de nacimiento');
+(3, 'AFIP'),
+(4, 'ARBA'),
+(5, 'Baja Automotor'),
+(6, 'Alta Automotor'),
+(7, 'Transferencia Automotor');
 
 -- --------------------------------------------------------
 
@@ -192,14 +185,35 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `vendedores`
+--
+
+CREATE TABLE `vendedores` (
+  `id` int(11) NOT NULL,
+  `nombre_vendedor` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vendedores`
+--
+
+INSERT INTO `vendedores` (`id`, `nombre_vendedor`) VALUES
+(1, 'Maxikiosco WhatsApp'),
+(2, 'Maxikiosco Facebook');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ventas`
 --
 
 CREATE TABLE `ventas` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `token` varchar(8) NOT NULL,
   `id_tramite` int(11) NOT NULL,
   `cliente` varchar(255) NOT NULL,
   `celular` int(11) NOT NULL,
+  `vendedor` int(11) DEFAULT NULL,
   `costo` int(11) DEFAULT NULL,
   `precio_venta` int(11) DEFAULT NULL,
   `forma_pago` varchar(255) DEFAULT NULL,
@@ -209,6 +223,8 @@ CREATE TABLE `ventas` (
   `dato2` varchar(255) DEFAULT NULL,
   `dato3` varchar(255) DEFAULT NULL,
   `dato4` varchar(255) DEFAULT NULL,
+  `dato5` varchar(255) DEFAULT NULL,
+  `dato6` varchar(255) DEFAULT NULL,
   `observaciones` text DEFAULT NULL,
   `id_estado` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -219,11 +235,14 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_tramite`, `cliente`, `celular`, `costo`, `precio_venta`, `forma_pago`, `estado_pago`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
-(16, 1, 'CARLOS CARLOTA', 1538338669, 100, 670, 'Efectivo', '', '6 días', '1234', NULL, NULL, NULL, NULL, 4, '2024-03-04 01:06:35', '2024-03-22 03:43:04'),
-(17, 1, 'ALBERTO FERNANDEZ', 39024353, 122500, 380000, 'Santi Banco Provincia', '', '5 días', '1234', NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 14:32:08'),
-(18, 2, 'GABRIEL FORMICHELLI', 1131462920, 1500, 14000, NULL, 'A confirmar', NULL, 'PKX869', '/storage/uploads/R8M7CSNrmgn4E4D9hltclLU7NT4yKSEAZMgHiUcK.jpg', '/storage/uploads/VRJluz2aCieYVic7zai9ELjE4WwyaVlz4gw7SUk1.jpg', 'CABA', NULL, 1, '2024-09-09 18:01:28', '2024-09-09 18:03:54'),
-(19, 2, 'GABRIEL FORMICHELLI', 1131462920, 1500, 14000, NULL, 'A confirmar', NULL, 'PKX869', 'https://servidor.net.ar/imgserver/uploads/image_66df178b949cd_1725896587.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66df179311b50_1725896595.jpg', 'CABA', 'CABA', 1, '2024-09-09 18:43:30', '2024-09-09 19:05:16');
+INSERT INTO `ventas` (`id`, `token`, `id_tramite`, `cliente`, `celular`, `vendedor`, `costo`, `precio_venta`, `forma_pago`, `estado_pago`, `tardanza`, `dato1`, `dato2`, `dato3`, `dato4`, `dato5`, `dato6`, `observaciones`, `id_estado`, `created_at`, `updated_at`) VALUES
+(16, '123456', 1, 'CARLOS CARLOTA', 1538338669, NULL, 100, 670, 'Efectivo', '', '6 días', '1234', NULL, NULL, NULL, NULL, NULL, NULL, 4, '2024-03-04 01:06:35', '2024-03-22 03:43:04'),
+(17, '123457', 1, 'ALBERTO FERNANDEZ', 39024353, NULL, 122500, 380000, 'Santi Banco Provincia', '', '5 días', '1234', NULL, NULL, NULL, NULL, NULL, 'Nada.', 5, '2024-03-19 08:59:17', '2024-03-21 14:32:08'),
+(18, '321453', 2, 'GABRIEL FORMICHELLI', 1131462920, NULL, 1500, 14000, NULL, 'A confirmar', NULL, 'PKX869', '/storage/uploads/R8M7CSNrmgn4E4D9hltclLU7NT4yKSEAZMgHiUcK.jpg', '/storage/uploads/VRJluz2aCieYVic7zai9ELjE4WwyaVlz4gw7SUk1.jpg', 'CABA', NULL, NULL, NULL, 3, '2024-09-09 18:01:28', '2024-09-13 18:57:29'),
+(19, '125346', 2, 'GABRIEL FORMICHELLI', 1131462920, NULL, 1500, 14000, 'Efectivo', 'Abonado', NULL, 'PKX869', 'https://servidor.net.ar/imgserver/uploads/image_66df178b949cd_1725896587.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66df179311b50_1725896595.jpg', 'CABA', NULL, NULL, 'CABA', 4, '2024-09-09 18:43:30', '2024-09-09 20:07:22'),
+(20, '756487', 2, 'SANTIAGO FORMICHELLI', 1138338669, NULL, 45000, 65000, NULL, 'A confirmar', NULL, 'PKX869', 'https://servidor.net.ar/imgserver/uploads/image_66df2bbd04477_1725901757.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66df2bc43ce44_1725901764.jpg', 'Buenos Aires', NULL, NULL, 'nada', 3, '2024-09-09 20:09:31', '2024-09-09 20:10:22'),
+(21, 'hyj674', 2, 'GABRIEL FORMICHELLI', 1131462920, NULL, 45000, 85000, NULL, 'Abonado', NULL, 'DFH123', 'https://servidor.net.ar/imgserver/uploads/image_66df2bbd04477_1725901757.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66e45a2e5fb14_1726241326.jpg', 'CABA', NULL, NULL, NULL, 1, '2024-09-13 18:44:40', '2024-09-13 18:44:40'),
+(22, '7SweIVRB', 2, 'SANTIAGO FORMICHELLI', 1164063966, NULL, 1500, 2342, 'Efectivo', 'Abonado', '6 días', 'DFH123', 'https://servidor.net.ar/imgserver/uploads/image_66df2bbd04477_1725901757.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66e45a2e5fb14_1726241326.jpg', 'CABA', 'https://servidor.net.ar/imgserver/uploads/image_66df2bbd04477_1725901757.jpg', 'https://servidor.net.ar/imgserver/uploads/image_66e45a2e5fb14_1726241326.jpg', 'CABA', 4, '2024-09-13 19:20:17', '2024-09-13 20:18:41');
 
 --
 -- Índices para tablas volcadas
@@ -282,10 +301,17 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indices de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `token` (`token`),
   ADD KEY `id_tramite` (`id_tramite`),
   ADD KEY `id_estado` (`id_estado`);
 
@@ -330,10 +356,16 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
